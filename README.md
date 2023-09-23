@@ -11,4 +11,4 @@ Python是很有用的语言。广泛应用在自动化、人工智能、数据�
 # Python和网络爬虫
 可以用Python自动化爬取指定网站的数据信息。
 
-譬如我前几天接单写的谷歌/必应/百度图片爬虫。
+譬如之前写过的[谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
