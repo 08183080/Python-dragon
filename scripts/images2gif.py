@@ -57,13 +57,13 @@ images2gif(get_all(path="D:\my_soft\全网（百度）图片下载器\东方"))
 
 
 # windows上写入文件夹,权限问题
-path = input("请输入你想要转换gif的图像文件夹: ")
-width = int(input("请输入你想要看的gif的宽度: "))
-height = int(input("请输入你想要看的gif的高度: "))
-ou_path = os.path.join(path, "half")
-if not os.path.exists(ou_path):
-    os.mkdir(ou_path)
-command = f"icacls {ou_path} /grant Everyone:(OI)(CI)F"
-subprocess.run(command, shell=True)
-convertjpg(path, ou_path, width, height)
-images2gif(ou_path)
+# path = input("请输入你想要转换gif的图像文件夹: ")
+# width = int(input("请输入你想要看的gif的宽度: "))
+# height = int(input("请输入你想要看的gif的高度: "))
+# ou_path = os.path.join(path, "half")
+# if not os.path.exists(ou_path):
+#     os.mkdir(ou_path)
+# command = f"icacls {ou_path} /grant Everyone:(OI)(CI)F"
+# subprocess.run(command, shell=True)
+# convertjpg(path, ou_path, width, height)
+# images2gif(ou_path)
