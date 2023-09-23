@@ -7,8 +7,8 @@ Python是很有用的语言。广泛应用在自动化、人工智能、数据�
 # Python的简单脚本
 可以用Python写一些最基础的脚本。
 
-譬如说对文件夹内的所有文件大小进行统计，以及各种排序（os， path, sys）。
+譬如说对[文件夹内的所有文件大小进行统计，以及各种排序（os， path, sys）](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484739&idx=1&sn=9f9a5f1cf193881640d9d531a81e7b9b&chksm=c379fccff40e75d9450596de4b58b659150a96d3a15b55f94c7538bf969562c12a82d39b430a&token=753455615&lang=zh_CN#rd)
 # Python和网络爬虫
 可以用Python自动化爬取指定网站的数据信息。
 
-譬如我前几天接单写的谷歌/必应/百度图片爬虫。
+譬如之前写过的[谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
