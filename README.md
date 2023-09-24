@@ -12,3 +12,10 @@ Python是很有用的语言。广泛应用在自动化、人工智能、数据�
 可以用Python自动化爬取指定网站的数据信息。
 
 譬如之前写过的[谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
+
+# Python文章翻译
+<ol>
+  <li><a href="https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484773&idx=1&sn=b00a58ba1917f188418015d442e2192d&chksm=c379fce9f40e75ff4e70bf3ed8d55a12bff8149849c00891ac638d70c53dadd696d14aefe0c2&token=965259687&lang=zh_CN#rd">
+    2023用Python赚钱的10种方式
+  </a></li>
+</ol>
