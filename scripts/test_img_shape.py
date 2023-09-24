@@ -24,3 +24,6 @@ files = get_all(path)
 for img in files:
     print(img)
     check(img)
+
+
+    
