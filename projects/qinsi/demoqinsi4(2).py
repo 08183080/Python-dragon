@@ -123,7 +123,7 @@ def get_alldatas(id,house,name):
     l4 = []
     data1 = data('1',id,house)
     proxy = {'http':"","https":""}
-    response1 = requests.post('https://web.qinsilk.com/is/admin/inner/storehouse/getGoodsSkuStoredListJSON.ac', headers=headers,cookies=cookies, data=data1, timeout=10)
+    response1 = requests.post('https://web.qinsilk.com/is/admin/inner/storehouse/getGoodsSkuStoredListJSON.ac', headers=headers,cookies=cookies, data=data1, timeout=10, verify=False, proxies=proxy)
     datas1 = json.loads(response1.text)
     print(datas1)
     pages = int(datas1["records"])
@@ -131,7 +131,7 @@ def get_alldatas(id,house,name):
     for page in range(1,pages+1):
         data2 = data(page,id,house)
         response = requests.post('https://web.qinsilk.com/is/admin/inner/storehouse/getGoodsSkuStoredListJSON.ac',
-                                 headers=headers,cookies=cookies, data=data2,timeout=10)
+                                 headers=headers,cookies=cookies, data=data2,timeout=10, verify= False, proxies=proxy)
         datas = json.loads(response.text)
         print(f'正在获取第{page}页的数据')
         time.sleep(1.2)
@@ -156,7 +156,7 @@ def get_allday(id,now_time,day,num):   #近30天销量数据
     l4 = []
     data1 = data2(id,day,now_time,'1')
     proxy = {'http':"","https":""}
-    response1 = requests.post('https://web.qinsilk.com/is/admin/inner/report/sale/saleGroupBySkuListJSON.ac', headers=headers,cookies=cookies, data=data1,timeout=10)
+    response1 = requests.post('https://web.qinsilk.com/is/admin/inner/report/sale/saleGroupBySkuListJSON.ac', headers=headers,cookies=cookies, data=data1,timeout=10, verify=False)
     print(response1.text)
     datas1 = json.loads(response1.text)
     pages = int(datas1["records"])
@@ -164,7 +164,7 @@ def get_allday(id,now_time,day,num):   #近30天销量数据
     for page in range(1,pages+1):
         data = data2(id,day,now_time,page)
         response = requests.post('https://web.qinsilk.com/is/admin/inner/report/sale/saleGroupBySkuListJSON.ac',
-                                  headers=headers,cookies=cookies, data=data, timeout=10)
+                                  headers=headers,cookies=cookies, data=data, timeout=10, verify=False)
         datas = json.loads(response.text)
         print(f'正在获取第{page}页的数据')
         time.sleep(1.25)
