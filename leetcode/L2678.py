@@ -1,10 +1,11 @@
 class Solution:
     def countSeniors(self, details: list[str]) -> int:
-        ans = 0
-        for detail in details:
-            if int(detail[11:13]) > 60:
-                ans += 1
-        return ans
+        # ans = 0
+        # for detail in details:
+        #     if int(detail[11:13]) > 60:
+        #         ans += 1
+        # return ans
+        return sum(1 for detail in details if detail[11:13] > '60')
     
 if __name__ == "__main__":
     s = Solution()
