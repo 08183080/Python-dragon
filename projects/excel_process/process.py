@@ -1,7 +1,9 @@
 import pandas as pd
+# import sys
+# sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', buffering=1)
 
-file = 'projects\excel_process\A股公开市场数据.xlsx'
-df = pd.read_excel(file)
+file = '.\A股公开市场数据.xlsx'
+df = pd.read_excel(file, engine='openpyxl')
 # print(df)
 column_1 = df['证券代码']
 column_2 = df['证券简称']
@@ -22,7 +24,7 @@ for i in column_2:
 ans1 = [a + b + c for a, b, c in zip(temp0, temp2, temp1)]
 print(ans1)
 df['代码'] = ans1
-with pd.ExcelWriter('projects\excel_process\A股公开市场数据.xlsx', engine='openpyxl') as writer:
+with pd.ExcelWriter('.\A股公开市场数据.xlsx', engine='openpyxl') as writer:
     df.to_excel(writer, index=False)
 
 """
@@ -33,12 +35,12 @@ ans1 = []
 for i in t1:
     p = i[:2]
     if i[:3] == '内蒙古':
-        p = i[:4]
+        p = i[:3]
     if i[:4] == '中国香港':
         p = i[:5]
     # print(p)
     ans1.append(p)
 print(ans1)
 df['省份信息'] = ans1
-with pd.ExcelWriter('projects\excel_process\A股公开市场数据.xlsx', engine='openpyxl') as writer:
+with pd.ExcelWriter('.\A股公开市场数据.xlsx', engine='openpyxl') as writer:
     df.to_excel(writer, index=False)
