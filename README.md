@@ -15,8 +15,13 @@ Python自动化爬取指定网站的数据信息。
 
 - [x] [谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
 
+# Python和图像处理
+- [ ] 手写检测器, 检测一张图片中的圆形
+- [ ] 手写检测器, 检测一张图片中的所有小圆形
+- [ ] 手写检测器, 人脸检测器
 
-
+# Python和LLM（待）
+# Python和网络安全（待）
 # Python 与自动化
 编程实现自动化，自动化办公，自动化完成领域任务，能自动化挣钱就更好啦
 
