@@ -12,17 +12,16 @@ def detect_non_black_circles(image_path):
     _, threshold = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
     
     # 检测圆形
-    circles = cv2.HoughCircles(threshold, cv2.HOUGH_GRADIENT, dp=1, minDist=100, param1=50, param2=30, minRadius=10, maxRadius=100)
-    print("!!!")
+    circles = cv2.HoughCircles(threshold, cv2.HOUGH_GRADIENT, dp=1, minDist=10, param1=10, param2=20, minRadius=10, maxRadius=50)
 
     # 提取圆形的位置和半径
     if circles is not None:
         circles = np.round(circles[0, :]).astype(int)
         for (x, y, r) in circles:
             # 检查圆形位置对应的像素值是否非黑色
-            if image[y, x, 0] != 0 or image[y, x, 1] != 0 or image[y, x, 2] != 0:
+            # if image[y, x, 0] != 0 or image[y, x, 1] != 0 or image[y, x, 2] != 0:
                 # 绘制圆形
-                cv2.circle(image, (x, y), r, (0, 255, 0), 2)
+            cv2.circle(image, (x, y), r, (0, 255, 0), 1)
     
     # 显示结果
     cv2.imshow("Result", image)
