@@ -29,5 +29,5 @@ def detect_non_black_circles(image_path):
     cv2.destroyAllWindows()
 
 # 调用函数进行测试
-image_path = "D:\\p-dragon\\Python-dragon\\projects\\image-process\\image.jpg"
+image_path = "D:\\Python\\Python\\projects\\image-process\\image.jpg"
 detect_non_black_circles(image_path)
