@@ -60,7 +60,7 @@ def combine_images(path):
 
 # in_path = "D:\Python\Python\projects\image-process\\tiny_circles"
 ou_path = "D:\Python\Python\projects\image-process\\resize_circles"
-# convertpng(in_path, ou_path, 60, 60)
+# convertpng(in_path, ou_path, 100, 100)
 combine_images(ou_path)
 
 
