@@ -1,8 +1,5 @@
 """
-需求: 给你一张图像, 检测出这张图像中的圆形物体出来
-方法: hough transform
-Detecting Circles in Images using OpenCV and Hough Circles
-ref: https://docs.opencv.org/3.4/d4/d70/tutorial_hough_circle.html
+opencv-python docs demo
 """
 import sys
 import cv2 as cv
@@ -22,43 +19,30 @@ def main(argv):
     
     gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
     
+    gray = cv.medianBlur(gray, 5) # 均值滤波
     
-    gray = cv.medianBlur(gray, 5)
-    
-    print(gray.shape)
     rows = gray.shape[0]
-    # 调参, 检测圆形...
+    """
+    此处调参, Minimum distance(第3个参数) between the centers of the detected circles. 
+    If the parameter is too small, multiple neighbor circles may be falsely detected 
+    in addition to a true one. 
+    If it is too large, some circles may be missed.
+    """
     circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 40,
                                param1=100, param2=30,
                                minRadius=1, maxRadius=30)
-    
-    circle_data = []
-    cropped_images = []
-    
+        
     if circles is not None:
         circles = np.uint16(np.around(circles))
         for i in circles[0, :]:
             center = (i[0], i[1])
-            radius = i[2]
-
             # circle center
-            # cv.circle(src, center, 1, (0, 100, 100), 3)
+            cv.circle(src, center, 1, (0, 100, 100), 3)
             # circle outline
-            # cv.circle(src, center, radius, (255, 0, 255), 3)
-
-            circle_data.append((center, radius))
-
-            x = center[0] - radius
-            y = center[1] - radius
-            w = h = radius * 2
-
-            cropped = src[y:y+h, x:x+w]
-            cropped_images.append(cropped)
-
-            for i, cropped in enumerate(cropped_images):
-                filename = "D:\\Python\\Python\\projects\\image-process\\tiny_circles\\" + str(i) + ".png"
-                cv.imwrite(filename, cropped)
-
+            radius = i[2]
+            cv.circle(src, center, radius, (255, 0, 255), 3)
+    
+    
     cv.imshow("detected circles", src)
     cv.waitKey(0)
     
