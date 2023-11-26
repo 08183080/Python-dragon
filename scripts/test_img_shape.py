@@ -13,13 +13,15 @@ def get_all(path):
     return files
 
 # 检查一张图片的shape
+# 扩展: shape的max和min...
 def check(img):
     img = Image.open(img)
     img_array = np.array(img)
     shape = img_array.shape
     print("img:", shape)
 
-path = "D:\my_soft\全网（百度）图片下载器\东方" # 输入你想要查询的图像文件夹
+# path = "D:\my_soft\全网（百度）图片下载器\东方" # 输入你想要查询的图像文件夹
+path = "D:\Python\Python\projects\image-process\\tiny_circles"
 files = get_all(path)
 for img in files:
     print(img)

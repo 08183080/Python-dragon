@@ -27,22 +27,38 @@ def main(argv):
     
     
     rows = gray.shape[0]
-    circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 8,
+    # 调参, 检测圆形...
+    circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 40,
                                param1=100, param2=30,
                                minRadius=1, maxRadius=30)
     
+    circle_data = []
+    cropped_images = []
     
     if circles is not None:
         circles = np.uint16(np.around(circles))
         for i in circles[0, :]:
             center = (i[0], i[1])
-            # circle center
-            cv.circle(src, center, 1, (0, 100, 100), 3)
-            # circle outline
             radius = i[2]
-            cv.circle(src, center, radius, (255, 0, 255), 3)
-    
-    
+
+            # circle center
+            # cv.circle(src, center, 1, (0, 100, 100), 3)
+            # circle outline
+            # cv.circle(src, center, radius, (255, 0, 255), 3)
+
+            circle_data.append((center, radius))
+
+            x = center[0] - radius
+            y = center[1] - radius
+            w = h = radius * 2
+
+            cropped = src[y:y+h, x:x+w]
+            cropped_images.append(cropped)
+
+            for i, cropped in enumerate(cropped_images):
+                filename = "D:\\Python\\Python\\projects\\image-process\\tiny_circles\\" + str(i) + ".png"
+                cv.imwrite(filename, cropped)
+
     cv.imshow("detected circles", src)
     cv.waitKey(0)
     

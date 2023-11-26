@@ -39,9 +39,6 @@ def convertjpg(in_path, ou_path, width, height):
         except Exception as e:
             print(e)
 
-
-
-
 def images2gif(files):
     # 首先将所有文件的大小调整一致
     # 其次再将所有大小一一致的文件转换成gif
