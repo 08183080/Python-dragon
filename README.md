@@ -21,8 +21,6 @@ Python自动化爬取指定网站的数据信息。
 - [ ] 图像复原器, 将一张模糊的图清晰化
 - [ ] 手写检测器, 人脸检测器
 
-# Python和LLM（待）
-# Python和网络安全（待）
 # Python 与自动化
 编程实现自动化，自动化办公，自动化完成领域任务，能自动化挣钱就更好啦
 
@@ -45,3 +43,8 @@ Python自动化爬取指定网站的数据信息。
 
 # Python学习路线
 - [ ] 【Python核心技术与实战】是【极客时间】的课程, 不错的
+
+# Python和人工智能
+- [ ] 复现SVD, Stable Video Diffuzion (immage2video)
+# Python和网络安全（待）
+# Python和知识图谱（待）
