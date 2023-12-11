@@ -10,7 +10,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200wpwy6bn/k0047973rwp.html"  # 某电影的page, 【前任 4】
+one_video_url = "https://v.qq.com/x/cover/mzc00200s86e0j8/a004630gwm2.html"  # 某电影的page
 
 def get_response(html_url):
     """
@@ -35,10 +35,14 @@ def get_content(html_url):
     """
     try:
         response = get_response(html_url).text
+        # print(response)
         tree = etree.HTML(response)
+        title = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/span/text()")[0]
+        hot_trend = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()")[0]
+        
     except Exception as e:
         print(e)
+    return title, hot_trend
 
-
-# print(get_response(one_video_url))
+print(get_content(one_video_url))
 
