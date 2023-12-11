@@ -10,7 +10,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200s86e0j8/a004630gwm2.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc00200is68204.html"  # 某电影的page
 
 def get_response(html_url):
     """
@@ -34,15 +34,23 @@ def get_content(html_url):
     简化: title, story, type, hot_trend(热度), score(腾讯评分), comment(评论), comment_num
     """
     try:
+        url = "https://otheve.beacon.qq.com/analytics/v2_upload?appkey=JS0081LY3JY6J3"
+        requests.post(url, headers=headers)
         response = get_response(html_url).text
         # print(response)
         tree = etree.HTML(response)
         title = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/span/text()")[0]
         hot_trend = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()")[0]
+        # type = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div[3]")
+        story = tree.xpath("/html/head/meta[5]/@content")[0]
+        # score = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div/div")
+
+        # script = tree.xpath("/html/head/script[13]/text()")  # script中含有大量相关信息
+        # print(script)
         
     except Exception as e:
         print(e)
-    return title, hot_trend
+    return title, hot_trend, story
 
 print(get_content(one_video_url))
 
