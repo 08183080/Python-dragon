@@ -43,14 +43,14 @@ def get_content(html_url):
         hot_trend = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()")[0]
         # type = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div[3]")
         story = tree.xpath("/html/head/meta[5]/@content")[0]
-        # score = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div/div")
+        # score = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/span[1]/text()")
 
         # script = tree.xpath("/html/head/script[13]/text()")  # script中含有大量相关信息
         # print(script)
         
     except Exception as e:
         print(e)
-    return title, hot_trend, story
+    return title, hot_trend, story#, score
 
 print(get_content(one_video_url))
 
