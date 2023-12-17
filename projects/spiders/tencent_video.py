@@ -30,12 +30,22 @@ def get_response(html_url):
     return response
 
 def get_comment(url):
-     """
-     通过xhr请求获得评论, 统计评论数量...
-     """
-     
-
-
+    """
+    通过xhr请求获得评论, 统计评论数量...
+    """
+    comment_url = "https://pbaccess.video.qq.com/trpc.universal_backend_service.page_server_rpc.PageServer/GetPageData?video_appid=3000010&vplatform=2"
+    data = {
+        "page_params": {
+            "req_from": "web",
+            "page_type": "channel_operation",
+            "page_id": "grade_hot_http",
+            "data_key": "cid=mzc00200tfo3aaf",
+            "lid": ""
+        },
+        "has_cache": 1
+    }
+    response = requests.post(comment_url, json=data, headers=headers).text
+    print(response)
 
 def get_content(html_url):
     """
@@ -74,5 +84,6 @@ def get_content(html_url):
         print(e)
     return title, hot_trend, story, score, categories
 
-print(get_content(one_video_url))
+# print(get_content(one_video_url))
+get_comment(one_video_url)
 
