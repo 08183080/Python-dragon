@@ -2,15 +2,17 @@
 【目标】爬取腾讯视频的介绍, 评论等信息
 电影
 """
+import re
 import requests
 from lxml import etree
+from bs4 import BeautifulSoup
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200is68204.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc00200w2oazbl/c0047yg867a.html"  # 某电影的page
 
 def get_response(html_url):
     """
@@ -27,6 +29,14 @@ def get_response(html_url):
     response.encoding = response.apparent_encoding  
     return response
 
+def get_comment(url):
+     """
+     通过xhr请求获得评论, 统计评论数量...
+     """
+     
+
+
+
 def get_content(html_url):
     """
     提取某个page中的关注字段内容
@@ -34,23 +44,35 @@ def get_content(html_url):
     简化: title, story, type, hot_trend(热度), score(腾讯评分), comment(评论), comment_num
     """
     try:
-        url = "https://otheve.beacon.qq.com/analytics/v2_upload?appkey=JS0081LY3JY6J3"
-        requests.post(url, headers=headers)
         response = get_response(html_url).text
         # print(response)
         tree = etree.HTML(response)
         title = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/span/text()")[0]
         hot_trend = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()")[0]
-        # type = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div[3]")
         story = tree.xpath("/html/head/meta[5]/@content")[0]
-        # score = tree.xpath("/html/body/div[1]/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/span[1]/text()")
 
-        # script = tree.xpath("/html/head/script[13]/text()")  # script中含有大量相关信息
-        # print(script)
+        # soup 使用起来很简单的... 
+        soup = BeautifulSoup(response, 'html.parser')
+        script_content = soup.find_all('script')
+        # print(script_content)
+        score_pattern = r"\d+(\.\d+)?分"
+        for script in script_content:
+            match = re.search(score_pattern, str(script))
+            if match:
+                score = match.group()
+                # print(score)
+                break
         
+        pattern = r'"main_genres":\s*"([^"]+)".*?"sub_genre":\s*"([^"]+)"'
+        match = re.search(pattern, str(script))
+        if match:
+                main_genres = match.group(1)
+                sub_genre = match.group(2)
+                categories = main_genres + "," + sub_genre
+                # print(categories)  # 输出: 爱情,喜剧,院线        
     except Exception as e:
         print(e)
-    return title, hot_trend, story#, score
+    return title, hot_trend, story, score, categories
 
 print(get_content(one_video_url))
 
