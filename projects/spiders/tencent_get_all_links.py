@@ -1,4 +1,9 @@
 import requests
+"""
+我感觉我模仿得很成功了, 但是仍然。。。
+200
+{'ret': 400, 'msg': 'server err'}
+"""
 
 url = "https://pbaccess.video.qq.com/trpc.vector_layout.page_view.PageService/getPage"
 
