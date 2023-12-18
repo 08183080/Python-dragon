@@ -84,6 +84,6 @@ def get_content(html_url):
         print(e)
     return title, hot_trend, story, score, categories
 
-# print(get_content(one_video_url))
-get_comment(one_video_url)
+print(get_content(one_video_url))
+# get_comment(one_video_url)
 
