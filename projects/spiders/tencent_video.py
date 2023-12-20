@@ -15,7 +15,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200wpwy6bn/k0047973rwp.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/dcxp2falmg4zujt.html"  # 某电影的page
 
 
 def get_response(html_url):
@@ -42,7 +42,7 @@ def get_key(url):
     cid = strings[-2]
     vid = strings[-1].split('.')[0]
     # print(cid, vid)
-    ans = f"cid={cid}&vid={vid}" #
+    ans = f"cid={cid}" #
     # print(ans)
     return ans
 

@@ -1,19 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
+"""
+和zy进行腾讯会议, 他直接启发我就是拼接, 点点点...
+"""
 
-url = "https://v.qq.com/channel/movie/list"
 data_url = "https://pbaccess.video.qq.com/trpc.vector_layout.page_view.PageService/getPage?video_appid=3000010"
+detail_url = "https://pbaccess.video.qq.com/trpc.universal_backend_service.page_server_rpc.PageServer/GetPageData?video_appid=3000010&vplatform=2&vversion_name=8.2.96"
+
+page_index = 1
 
 payload = {
     "page_context": {
-        "page_index": "5"
+        "page_index": f"{page_index}"
     },
     "page_params": {
         "page_id": "channel_list_second_page",
         "page_type": "operation",
         "channel_id": "100173",
         "filter_params": "sort=75",
-        "page": "5"
+        "page": f"{page_index}"
     },
     "page_bypass_params": {
         "params": {
@@ -21,7 +26,7 @@ payload = {
             "page_type": "operation",
             "channel_id": "100173",
             "filter_params": "sort=75",
-            "page": "5",
+            "page": f"{page_index}",
             "caller_id": "3000010",
             "platform_id": "2",
             "data_mode": "default",
@@ -48,12 +53,13 @@ headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     }
 
-# response = requests.post(url, json=payload, headers=headers).json()
-# print(response)
-"""
-所有视频的超链接并不在异步加载的json中, 而是在异步加载的界面中的a标签中
-"""
 
-response = requests.get(url, headers=headers).text
-soup = BeautifulSoup(response, "html.parser")
-
+cids = []
+for page_index in range(1, 10):
+    response = requests.post(data_url, headers=headers, json=payload)
+    data = response.json()
+    cards = data['data']['CardList'][0]['children_list']['list']['cards']
+    for card in cards:
+        # print(card['params']['cid'])
+        cids.append(card['params']['cid'])
+    print(cids)
