@@ -15,7 +15,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/dcxp2falmg4zujt.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/jzibmktk53rsf58/l33395c4t69.html"  # 某电影的page
 
 
 def get_response(html_url):

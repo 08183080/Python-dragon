@@ -1,3 +1,4 @@
+import re
 import requests
 from bs4 import BeautifulSoup
 """
@@ -55,11 +56,32 @@ headers = {
 
 
 cids = []
-for page_index in range(1, 10):
+urls = []
+urlss = []
+for page_index in range(1, 3):
     response = requests.post(data_url, headers=headers, json=payload)
     data = response.json()
     cards = data['data']['CardList'][0]['children_list']['list']['cards']
     for card in cards:
         # print(card['params']['cid'])
         cids.append(card['params']['cid'])
-    print(cids)
+        url = "https://v.qq.com/x/cover/" + card['params']['cid'] + ".html"
+        urls.append(url)
+    # print(urls)
+
+vid_pattern = r'"vid"\s*:\s*"([^"]+)"'
+for url in urls:
+    response = requests.get(url, headers=headers).text
+    # print(response)
+    match = re.search(vid_pattern, response)
+    if match:
+        vid = match.group(1)
+        # print(vid)
+        urll = url.split(".html")
+        # print(urll)
+        urll = urll[0] + "/" + str(vid) + ".html"
+        # print(urll)
+        urlss.append(urll)
+print(urlss)
+
+    
