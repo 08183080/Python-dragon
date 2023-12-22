@@ -83,5 +83,3 @@ for url in urls:
         # print(urll)
         urlss.append(urll)
 print(urlss)
-
-    
