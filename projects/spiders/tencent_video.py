@@ -7,8 +7,11 @@ import json
 import re
 import time
 import requests
+import pandas as pd
 from lxml import etree
 from bs4 import BeautifulSoup
+
+from tencent_get_all_links import *
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
@@ -154,7 +157,8 @@ def get_content(html_url):
             if match:
                 score = match.group()
                 # print(score)
-                break
+            else:
+                score = None
 
         pattern = r'"main_genres":\s*"([^"]+)".*?"sub_genre":\s*"([^"]+)"'
         match = re.search(pattern, str(script))
@@ -170,6 +174,14 @@ def get_content(html_url):
     return title, hot_trend, story, score, categories, comments, comments_num
 
 
-print(get_content(one_video_url))
-# get_comment(one_video_url)
-# get_cid(one_video_url)
+# print(get_content(one_video_url))
+
+links = get_links()
+infos = []
+for link in links:
+    info = get_content(link)
+    infos.append(info)
+
+data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "categories", "comments", "comments_num"])
+print(data)
+data.to_excel("etencent_video.xlsx", index = False)

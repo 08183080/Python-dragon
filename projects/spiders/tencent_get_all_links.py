@@ -1,6 +1,7 @@
 import re
 import requests
 from bs4 import BeautifulSoup
+
 """
 和zy进行腾讯会议, 他直接启发我就是拼接, 点点点...
 """
@@ -54,32 +55,36 @@ headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     }
 
+def get_links():
+    cids = []
+    urls = []
+    urlss = []
+    for page_index in range(1, 2):
+        response = requests.post(data_url, headers=headers, json=payload)
+        data = response.json()
+        cards = data['data']['CardList'][0]['children_list']['list']['cards']
+        for card in cards:
+            # print(card['params']['cid'])
+            cids.append(card['params']['cid'])
+            url = "https://v.qq.com/x/cover/" + card['params']['cid'] + ".html"
+            urls.append(url)
+        # print(urls)
 
-cids = []
-urls = []
-urlss = []
-for page_index in range(1, 3):
-    response = requests.post(data_url, headers=headers, json=payload)
-    data = response.json()
-    cards = data['data']['CardList'][0]['children_list']['list']['cards']
-    for card in cards:
-        # print(card['params']['cid'])
-        cids.append(card['params']['cid'])
-        url = "https://v.qq.com/x/cover/" + card['params']['cid'] + ".html"
-        urls.append(url)
-    # print(urls)
+    vid_pattern = r'"vid"\s*:\s*"([^"]+)"'
+    for url in urls:
+        response = requests.get(url, headers=headers).text
+        # print(response)
+        match = re.search(vid_pattern, response)
+        if match:
+            vid = match.group(1)
+            # print(vid)
+            urll = url.split(".html")
+            # print(urll)
+            urll = urll[0] + "/" + str(vid) + ".html"
+            # print(urll)
+            urlss.append(urll)
+    print(urlss)
+    return urlss
 
-vid_pattern = r'"vid"\s*:\s*"([^"]+)"'
-for url in urls:
-    response = requests.get(url, headers=headers).text
-    # print(response)
-    match = re.search(vid_pattern, response)
-    if match:
-        vid = match.group(1)
-        # print(vid)
-        urll = url.split(".html")
-        # print(urll)
-        urll = urll[0] + "/" + str(vid) + ".html"
-        # print(urll)
-        urlss.append(urll)
-print(urlss)
+if __name__ == "__main__": 
+    get_links()
