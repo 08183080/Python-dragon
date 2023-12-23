@@ -139,6 +139,7 @@ def get_content(html_url):
     score = None
     categories = ""
     comments = []
+    area = ""
     try:
         response = get_response(html_url).text
         # print(response)
@@ -153,6 +154,7 @@ def get_content(html_url):
 
         score_pattern = r"\d+(\.\d+)?分"
         type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
+        area_pattern = r'"area_name":\s*"([^"]+)"'
         match = re.search(score_pattern, response)
         if match:
             score = match.group()
@@ -163,11 +165,16 @@ def get_content(html_url):
             main_genres = match2.group(1)
             categories = main_genres 
             print(categories)  
+        
+        m3 = re.search(area_pattern, response)
+        if m3:
+            area = m3.group(1)
+            print(area)
         comments = get_comment(html_url)
         comments_num = len(comments)
     except Exception as e:
         print(e)
-    ans = (title, hot_trend, story, score, categories, comments, comments_num) 
+    ans = (title, hot_trend, story, score, area, categories, comments, comments_num) 
     print(ans)
     return ans
 
@@ -180,6 +187,6 @@ for link in links:
     info = get_content(link)
     infos.append(info)
 
-data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "categories", "comments", "comments_num"])
+data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "comments", "comments_num"])
 print(data)
 data.to_excel("tencent_video.xlsx", index = False)
