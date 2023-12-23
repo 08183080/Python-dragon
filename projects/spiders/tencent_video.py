@@ -18,7 +18,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/jzibmktk53rsf58/l33395c4t69.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc00200bd3gkta/u004623x0qf.html"  # 某电影的page
 
 
 def get_response(html_url):
@@ -122,8 +122,8 @@ def get_comment(url):
                     decoded_text = decoded_bytes.decode("utf-8")
                     # print(decoded_text)
                     ans.append(decoded_text)
-    print("****")
-    print(ans)
+    # print("****")
+    # print(ans)
     return ans
 
 
@@ -133,6 +133,10 @@ def get_content(html_url):
     需求: 视频名称, 视频类型(电影...), 视频类型或内容类型(爱情, 喜剧, ...), 视频简介, 视频语言或国家, 视频内容简介, 视频评分, 热度, 点评数, 用户评价内容
     简化: title, story, type, hot_trend(热度), score(腾讯评分), comment(评论), comment_num
     """
+    title = None
+    hot_trend = None
+    story = ""
+    score = None
     categories = ""
     comments = []
     try:
@@ -147,31 +151,25 @@ def get_content(html_url):
         )[0]
         story = tree.xpath("/html/head/meta[5]/@content")[0]
 
-        # soup 使用起来很简单的...
-        soup = BeautifulSoup(response, "html.parser")
-        script_content = soup.find_all("script")
-        # print(script_content)
         score_pattern = r"\d+(\.\d+)?分"
-        for script in script_content:
-            match = re.search(score_pattern, str(script))
-            if match:
-                score = match.group()
-                # print(score)
-            else:
-                score = None
-
-        pattern = r'"main_genres":\s*"([^"]+)".*?"sub_genre":\s*"([^"]+)"'
-        match = re.search(pattern, str(script))
+        type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
+        match = re.search(score_pattern, response)
         if match:
-            main_genres = match.group(1)
-            sub_genre = match.group(2)
-            categories = main_genres + "," + sub_genre
-            # print(categories)  # 输出: 爱情,喜剧,院线
+            score = match.group()
+            print(score)
+
+        match2 = re.search(type_pattern, response)
+        if match2:
+            main_genres = match2.group(1)
+            categories = main_genres 
+            print(categories)  
         comments = get_comment(html_url)
         comments_num = len(comments)
     except Exception as e:
         print(e)
-    return title, hot_trend, story, score, categories, comments, comments_num
+    ans = (title, hot_trend, story, score, categories, comments, comments_num) 
+    print(ans)
+    return ans
 
 
 # print(get_content(one_video_url))
@@ -184,4 +182,4 @@ for link in links:
 
 data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "categories", "comments", "comments_num"])
 print(data)
-data.to_excel("etencent_video.xlsx", index = False)
+data.to_excel("tencent_video.xlsx", index = False)
