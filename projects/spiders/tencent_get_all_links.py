@@ -53,13 +53,13 @@ headers = {
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-site",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    }
+}
 
 def get_links():
     cids = []
     urls = []
     urlss = []
-    for page_index in range(1, 4):
+    for page_index in range(1, 2):
         response = requests.post(data_url, headers=headers, json=payload)
         data = response.json()
         cards = data['data']['CardList'][0]['children_list']['list']['cards']

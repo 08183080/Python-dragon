@@ -9,7 +9,6 @@ import time
 import requests
 import pandas as pd
 from lxml import etree
-from bs4 import BeautifulSoup
 
 from tencent_get_all_links import *
 
@@ -18,7 +17,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200bd3gkta/u004623x0qf.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc002005pojw87/b0046qngm43.html"  # 某电影的page
 
 
 def get_response(html_url):
@@ -57,7 +56,7 @@ def get_comment(url):
     """
     ans = []
     page_index = 1
-    page_size = 10
+    page_size = 2
     comment_url = "https://pbaccess.video.qq.com/trpc.universal_backend_service.page_server_rpc.PageServer/GetPageData?video_appid=1000005&vversion_name=1.0.0&vplatform=2&guid=e819249d9650d486&video_omgid=e819249d9650d486"
     data_key = get_key(url)
 
@@ -140,6 +139,8 @@ def get_content(html_url):
     categories = ""
     comments = []
     area = ""
+    date = None
+    comments_num = 0
     try:
         response = get_response(html_url).text
         # print(response)
@@ -155,6 +156,8 @@ def get_content(html_url):
         score_pattern = r"\d+(\.\d+)?分"
         type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
         area_pattern = r'"area_name":\s*"([^"]+)"' # area
+        date_patttern = r'"publish_date":\s*"([^"]+)"'
+
         match = re.search(score_pattern, response)
         if match:
             score = match.group()
@@ -170,23 +173,30 @@ def get_content(html_url):
         if m3:
             area = m3.group(1)
             print(area)
+
+        m4 = re.search(date_patttern, response)
+        if m4:
+            date = m4.group(1)
+            print(date)
+
+        m4 = re.search()    
         comments = get_comment(html_url)
         comments_num = len(comments)
     except Exception as e:
         print(e)
-    ans = (title, hot_trend, story, score, area, categories, comments, comments_num) 
+    ans = (title, hot_trend, story, score, area, categories, date, comments, comments_num) 
     print(ans)
     return ans
 
 
-# print(get_content(one_video_url))
+print(get_content(one_video_url))
 
-links = get_links()
-infos = []
-for link in links:
-    info = get_content(link)
-    infos.append(info)
+# links = get_links()
+# infos = []
+# for link in links:
+#     info = get_content(link)
+#     infos.append(info)
 
-data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "comments", "comments_num"])
-print(data)
-data.to_excel("tencent_video.xlsx", index = False)
+# data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "comments", "comments_num"])
+# print(data)
+# data.to_excel("tencent_video.xlsx", index = False)
