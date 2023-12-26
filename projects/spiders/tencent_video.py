@@ -17,7 +17,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc002005pojw87/b0046qngm43.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc00200wpwy6bn/k0047973rwp.html"  # 某电影的page
 
 
 def get_response(html_url):
@@ -44,7 +44,7 @@ def get_key(url):
     cid = strings[-2]
     vid = strings[-1].split('.')[0]
     # print(cid, vid)
-    ans = f"cid={cid}" #
+    ans = f"cid={cid}&vid={vid}"
     # print(ans)
     return ans
 
@@ -56,7 +56,7 @@ def get_comment(url):
     """
     ans = []
     page_index = 1
-    page_size = 2
+    page_size = 30
     comment_url = "https://pbaccess.video.qq.com/trpc.universal_backend_service.page_server_rpc.PageServer/GetPageData?video_appid=1000005&vversion_name=1.0.0&vplatform=2&guid=e819249d9650d486&video_omgid=e819249d9650d486"
     data_key = get_key(url)
 
@@ -121,8 +121,8 @@ def get_comment(url):
                     decoded_text = decoded_bytes.decode("utf-8")
                     # print(decoded_text)
                     ans.append(decoded_text)
-    # print("****")
-    # print(ans)
+    print("****")
+    print(ans)
     return ans
 
 
@@ -140,7 +140,6 @@ def get_content(html_url):
     comments = []
     area = ""
     date = None
-    comments_num = 0
     try:
         response = get_response(html_url).text
         # print(response)
@@ -156,7 +155,7 @@ def get_content(html_url):
         score_pattern = r"\d+(\.\d+)?分"
         type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
         area_pattern = r'"area_name":\s*"([^"]+)"' # area
-        date_patttern = r'"publish_date":\s*"([^"]+)"'
+        date_pattern = r'"publish_date":\s*"([^"]+)"'
 
         match = re.search(score_pattern, response)
         if match:
@@ -172,31 +171,29 @@ def get_content(html_url):
         m3 = re.search(area_pattern, response)
         if m3:
             area = m3.group(1)
-            print(area)
+            print(area)  
 
-        m4 = re.search(date_patttern, response)
+        m4 = re.search(date_pattern, response)
         if m4:
             date = m4.group(1)
-            print(date)
+            print(date)      
 
-        m4 = re.search()    
         comments = get_comment(html_url)
         comments_num = len(comments)
+
     except Exception as e:
         print(e)
-    ans = (title, hot_trend, story, score, area, categories, date, comments, comments_num) 
-    print(ans)
-    return ans
+    return title, hot_trend, story, area, score, categories, date, comments, comments_num
 
 
-print(get_content(one_video_url))
+# print(len(get_content(one_video_url)))
 
-# links = get_links()
-# infos = []
-# for link in links:
-#     info = get_content(link)
-#     infos.append(info)
+links = get_links()
+infos = []
+for link in links:
+    info = get_content(link)
+    infos.append(info)
 
-# data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "comments", "comments_num"])
-# print(data)
-# data.to_excel("tencent_video.xlsx", index = False)
+data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "date",  "comments", "comments_num"])
+print(data)
+data.to_excel("腾讯_电影_2.xlsx", index = False)
