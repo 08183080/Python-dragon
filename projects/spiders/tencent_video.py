@@ -154,7 +154,7 @@ def get_content(html_url):
 
         score_pattern = r"\d+(\.\d+)?分"
         type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
-        area_pattern = r'"area_name":\s*"([^"]+)"'
+        area_pattern = r'"area_name":\s*"([^"]+)"' # area
         match = re.search(score_pattern, response)
         if match:
             score = match.group()
