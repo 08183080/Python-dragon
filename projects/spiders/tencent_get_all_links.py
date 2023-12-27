@@ -18,16 +18,16 @@ payload = {
     "page_params": {
         "page_id": "channel_list_second_page",
         "page_type": "operation",
-        "channel_id": "100173",
-        "filter_params": "sort=75",
+        "channel_id": "100109",
+        "filter_params": "sort=46",
         "page": f"{page_index}"
     },
     "page_bypass_params": {
         "params": {
             "page_id": "channel_list_second_page",
             "page_type": "operation",
-            "channel_id": "100173",
-            "filter_params": "sort=75",
+            "channel_id": "100109",
+            "filter_params": "sort=46",
             "page": f"{page_index}",
             "caller_id": "3000010",
             "platform_id": "2",
@@ -35,7 +35,7 @@ payload = {
             "user_mode": "default"
         },
         "scene": "operation",
-        "abtest_bypass_id": "24d0246cdbfebc53"
+        "abtest_bypass_id": "65ffa94b4e3c21c2"
     }
 }
 
@@ -59,7 +59,7 @@ def get_links():
     cids = []
     urls = []
     urlss = []
-    for page_index in range(80, 100):
+    for page_index in range(30, 50):
         response = requests.post(data_url, headers=headers, json=payload)
         data = response.json()
         cards = data['data']['CardList'][0]['children_list']['list']['cards']

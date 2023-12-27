@@ -197,9 +197,9 @@ for link in links:
     info = get_content(link)
     infos.append(info)
 
-data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "date",  "comments", "comments_num"])
+data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "area", "score", "categories", "date",  "comments", "comments_num"])
 print(data)
-data.to_excel("腾讯_电影_4.xlsx", index = False)
+data.to_excel("腾讯_综艺_2.xlsx", index = False)
 
 end_time = time.time()
 exec_time = end_time - start_time
