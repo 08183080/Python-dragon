@@ -17,7 +17,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200wpwy6bn/k0047973rwp.html"  # 某电影的page
+one_video_url = "https://v.qq.com/x/cover/mzc00200xf3rir6/i0046sewh4r.html" 
 
 
 def get_response(html_url):
@@ -187,7 +187,7 @@ def get_content(html_url):
     return title, hot_trend, story, area, score, categories, date, comments, comments_num
 
 
-# print(len(get_content(one_video_url)))
+# print(get_content(one_video_url))
 
 start_time = time.time()
 
@@ -199,7 +199,7 @@ for link in links:
 
 data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "area", "score", "categories", "date",  "comments", "comments_num"])
 print(data)
-data.to_excel("腾讯_综艺_2.xlsx", index = False)
+data.to_excel("腾讯_动漫_1.xlsx", index = False)
 
 end_time = time.time()
 exec_time = end_time - start_time
