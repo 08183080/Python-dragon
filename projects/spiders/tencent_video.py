@@ -189,6 +189,8 @@ def get_content(html_url):
 
 # print(len(get_content(one_video_url)))
 
+start_time = time.time()
+
 links = get_links()
 infos = []
 for link in links:
@@ -198,3 +200,7 @@ for link in links:
 data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "date",  "comments", "comments_num"])
 print(data)
 data.to_excel("腾讯_电影_2.xlsx", index = False)
+
+end_time = time.time()
+exec_time = end_time - start_time
+print("代码执行时间: ", exec_time, "秒")
