@@ -199,7 +199,7 @@ for link in links:
 
 data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "score", "area", "categories", "date",  "comments", "comments_num"])
 print(data)
-data.to_excel("腾讯_电影_2.xlsx", index = False)
+data.to_excel("腾讯_电影_4.xlsx", index = False)
 
 end_time = time.time()
 exec_time = end_time - start_time

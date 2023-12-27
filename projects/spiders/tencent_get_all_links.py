@@ -59,7 +59,7 @@ def get_links():
     cids = []
     urls = []
     urlss = []
-    for page_index in range(1, 50):
+    for page_index in range(80, 100):
         response = requests.post(data_url, headers=headers, json=payload)
         data = response.json()
         cards = data['data']['CardList'][0]['children_list']['list']['cards']
