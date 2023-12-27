@@ -138,6 +138,7 @@ def get_content(html_url):
     score = None
     categories = ""
     comments = []
+    comments_num = 0
     area = ""
     date = None
     try:
