@@ -93,7 +93,7 @@ def get_links_with_multithreading(start, end):
     result_list = []  # 存储结果的列表
     threads = []
 
-    step = (end - start) // 8  # 将区间四等分
+    step = (end - start) // 8  # 将区间n等分
     for i in range(8):
         sub_start = start + i * step
         sub_end = sub_start + step if i < 7 else end
