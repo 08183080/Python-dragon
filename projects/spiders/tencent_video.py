@@ -216,10 +216,10 @@ def get_and_download(start, end, path):
     threads = []
 
     # 分配每个线程要处理的URL数量
-    step = len(links) // 10
-    for i in range(10):
+    step = len(links) // 16
+    for i in range(16):
         start = i * step
-        end = start + step if i < 9 else len(links)
+        end = start + step if i < 15 else len(links)
         thread = threading.Thread(target=process_page, args=(start, end, links, result_queue))
         thread.start()
         threads.append(thread)
@@ -236,9 +236,9 @@ def get_and_download(start, end, path):
 
     data = pd.DataFrame(infos, columns=["title", "hot_trend", "story", "area", "score", "categories", "date", "comments", "comments_num"])
     # print(data)
-    data.to_csv(path, encoding="utf-8",index=False)
+    data.to_excel(path, encoding="utf-8",index=False)
     print(f"{path}文件写入!")
 
 
 if __name__ == '__main__':
-    get_and_download(1, 100, "电视剧_1.xlsx")
+    get_and_download(1, 100, "电影_1.xlsx")
