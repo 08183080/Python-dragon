@@ -216,10 +216,10 @@ def get_and_download(start, end, path):
     threads = []
 
     # 分配每个线程要处理的URL数量
-    step = len(links) // 12
-    for i in range(12):
+    step = len(links) // 16
+    for i in range(16):
         start = i * step
-        end = start + step if i < 11 else len(links)
+        end = start + step if i < 15 else len(links)
         thread = threading.Thread(target=process_page, args=(start, end, links, result_queue))
         thread.start()
         threads.append(thread)
