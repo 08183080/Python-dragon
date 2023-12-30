@@ -142,8 +142,8 @@ def get_content(html_url):
     comments = []
 
     score_pattern = r"\d+(\.\d+)?分"
-    type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
-    area_pattern = r'"area_name":\s*"([^"]+)"' # area
+    type_pattern = r'"main_genres":\s*"([^"]+)"'  
+    area_pattern = r'"area_name":\s*"([^"]+)"' 
     date_pattern = r'"publish_date":\s*"([^"]+)"'
 
     try:
@@ -236,9 +236,9 @@ def get_and_download(start, end, path):
 
     data = pd.DataFrame(infos, columns=["title", "hot_trend", "story", "area", "score", "categories", "date", "comments", "comments_num"])
     # print(data)
-    data.to_excel(path, encoding="utf-8",index=False)
+    data.to_excel(path,index=False)
     print(f"{path}文件写入!")
 
 
 if __name__ == '__main__':
-    get_and_download(1, 100, "电影_1.xlsx")
+    get_and_download(1, 120, "电影_1.xlsx")
