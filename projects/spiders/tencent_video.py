@@ -244,4 +244,6 @@ if __name__ == '__main__':
     # get_and_download(120, 200 "电影_3.xlsx") # 电影完全get
     # get_and_download(180, 200, "动漫_2.xlsx") # 动漫完全get
     # get_and_download(0, 200, "纪录片.xlsx") # 纪录片完全get
-    get_and_download(0, 200, "少儿.xlsx") # 少儿
+    # get_and_download(0, 200, "少儿.xlsx") # 少儿完全get
+    # get_and_download(0, 200, "电视剧.xlsx") # 电视剧WTF  openpyxl写入非法字符错误!
+    get_and_download(0, 200, "综艺片.xlsx")
