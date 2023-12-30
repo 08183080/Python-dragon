@@ -1,23 +1,27 @@
 """
 【目标】爬取腾讯视频的介绍, 评论等信息
-电影
+电影, 电视剧, 动漫, 综艺, 纪录片, 少儿
 """
 import base64
 import json
 import re
 import time
+import random
 import requests
 import pandas as pd
+import threading
+import queue
 from lxml import etree
 
-from tencent_get_all_links import *
+# from tencent_get_all_links import *
+from mul_threads_get_links import get_links_with_multithreading
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/mzc00200xf3rir6/i0046sewh4r.html" 
+one_video_url = "https://v.qq.com/x/cover/znda81ms78okdwd/e00242bvw06.html" 
 
 
 def get_response(html_url):
@@ -26,12 +30,7 @@ def get_response(html_url):
         1. url地址
         2. 请求方式<get post>
     """
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-    }
     response = requests.get(url=html_url, headers=headers)
-    # <Response [200]>
-    # 自动识别编码（智能提示，不需要记...）
     response.encoding = response.apparent_encoding
     return response
 
@@ -47,7 +46,6 @@ def get_key(url):
     ans = f"cid={cid}&vid={vid}"
     # print(ans)
     return ans
-
 
 def get_comment(url):
     """
@@ -103,26 +101,28 @@ def get_comment(url):
         "sec-fetch-site": "same-site",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     }
-    for page_index in range(1, 10):
-        time.sleep(0.2)
-        response = requests.post(comment_url, json=payload, headers=headers).json()
+    n = int(random.randint(15, 30))
+    for page_index in range(1, n):
+        try:
+            response = requests.post(comment_url, json=payload, headers=headers).json()
 
-        module_list_datas = response["data"]["module_list_datas"]
-        for m in module_list_datas:
-            module_datas = m["module_datas"]
-            for md in module_datas:
-                item_datas = md["item_data_lists"]["item_datas"]
-                for idatas in item_datas:
-                    complex_json = idatas["complex_json"]
-                    cj = json.loads(complex_json)
-                    # print(json.dumps(cj))
-                    encoded_str = cj["content"]["content"]
-                    decoded_bytes = base64.b64decode(encoded_str)
-                    decoded_text = decoded_bytes.decode("utf-8")
-                    # print(decoded_text)
-                    ans.append(decoded_text)
-    print("****")
-    print(ans)
+            module_list_datas = response["data"]["module_list_datas"]
+            for m in module_list_datas:
+                module_datas = m["module_datas"]
+                for md in module_datas:
+                    item_datas = md["item_data_lists"]["item_datas"]
+                    for idatas in item_datas:
+                        complex_json = idatas["complex_json"]
+                        cj = json.loads(complex_json)
+                        # print(json.dumps(cj))
+                        encoded_str = cj["content"]["content"]
+                        decoded_bytes = base64.b64decode(encoded_str)
+                        decoded_text = decoded_bytes.decode("utf-8")
+                        # print(decoded_text)
+                        ans.append(decoded_text)
+        except Exception as e:
+            print(e)
+            # continue
     return ans
 
 
@@ -130,17 +130,22 @@ def get_content(html_url):
     """
     提取某个page中的关注字段内容
     需求: 视频名称, 视频类型(电影...), 视频类型或内容类型(爱情, 喜剧, ...), 视频简介, 视频语言或国家, 视频内容简介, 视频评分, 热度, 点评数, 用户评价内容
-    简化: title, story, type, hot_trend(热度), score(腾讯评分), comment(评论), comment_num
     """
     title = None
     hot_trend = None
     story = ""
+    area = ""
     score = None
     categories = ""
-    comments = []
-    comments_num = 0
-    area = ""
     date = None
+    comments_num = 0
+    comments = []
+
+    score_pattern = r"\d+(\.\d+)?分"
+    type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
+    area_pattern = r'"area_name":\s*"([^"]+)"' # area
+    date_pattern = r'"publish_date":\s*"([^"]+)"'
+
     try:
         response = get_response(html_url).text
         # print(response)
@@ -153,54 +158,86 @@ def get_content(html_url):
         )[0]
         story = tree.xpath("/html/head/meta[5]/@content")[0]
 
-        score_pattern = r"\d+(\.\d+)?分"
-        type_pattern = r'"main_genres":\s*"([^"]+)"'  # "main_genres": "爱情"
-        area_pattern = r'"area_name":\s*"([^"]+)"' # area
-        date_pattern = r'"publish_date":\s*"([^"]+)"'
+        m1 = re.search(score_pattern, response)
+        if m1:
+            score = m1.group()
+            # print(score)
 
-        match = re.search(score_pattern, response)
-        if match:
-            score = match.group()
-            print(score)
-
-        match2 = re.search(type_pattern, response)
-        if match2:
-            main_genres = match2.group(1)
+        m2 = re.search(type_pattern, response)
+        if m2:
+            main_genres = m2.group(1)
             categories = main_genres 
-            print(categories)  
+            # print(categories)  
         
         m3 = re.search(area_pattern, response)
         if m3:
             area = m3.group(1)
-            print(area)  
+            # print(area)  
 
         m4 = re.search(date_pattern, response)
         if m4:
             date = m4.group(1)
-            print(date)      
+            # print(date)      
 
-        comments = get_comment(html_url)
+        comments = get_comment(html_url) # start, end
         comments_num = len(comments)
+        print(f"{title}获取完毕!")
 
     except Exception as e:
-        print(e)
-    return title, hot_trend, story, area, score, categories, date, comments, comments_num
+        print(f"处理{html_url}出现问题: ", e)
+    return title, hot_trend, story, area, score, categories, date,  comments_num, comments
 
+
+def timeit(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()  # 记录函数开始执行的时间
+        result = func(*args, **kwargs)  # 执行被装饰的函数
+        end_time = time.time()  # 记录函数执行结束的时间
+        execution_time = end_time - start_time  # 计算函数的执行时间
+        print(f"函数 {func.__name__} 的执行时间为: {execution_time} 秒")
+        return result
+    return wrapper
 
 # print(get_content(one_video_url))
 
-start_time = time.time()
+def process_page(start, end, links, result_queue):
+    infos = []
 
-links = get_links()
-infos = []
-for link in links:
-    info = get_content(link)
-    infos.append(info)
+    for i in range(start, end):
+        link = links[i]
+        info = get_content(link)
+        infos.append(info)
+    
+    result_queue.put(infos)
 
-data = pd.DataFrame(infos, columns = ["title", "hot_trend", "story", "area", "score", "categories", "date",  "comments", "comments_num"])
-print(data)
-data.to_excel("腾讯_动漫_1.xlsx", index = False)
+def get_and_download(start, end):
+    links =get_links_with_multithreading(start, end)
+    result_queue = queue.Queue()  # 创建一个队列用于存储子线程的结果
+    threads = []
 
-end_time = time.time()
-exec_time = end_time - start_time
-print("代码执行时间: ", exec_time, "秒")
+    # 分配每个线程要处理的URL数量
+    step = len(links) // 10
+    for i in range(10):
+        start = i * step
+        end = start + step if i < 9 else len(links)
+        thread = threading.Thread(target=process_page, args=(start, end, links, result_queue))
+        thread.start()
+        threads.append(thread)
+
+    # 等待所有子线程完成
+    for thread in threads:
+        thread.join()
+
+    # 从队列中获取所有子线程的结果
+    infos = []
+    while not result_queue.empty():
+        infos.extend(result_queue.get())
+    # print(infos)
+
+    data = pd.DataFrame(infos, columns=["title", "hot_trend", "story", "area", "score", "categories", "date", "comments", "comments_num"])
+    print(data)
+    data.to_csv("电视剧_1.xlsx",encoding="utf-8",index=False)
+
+
+if __name__ == '__main__':
+    get_and_download(1, 100)

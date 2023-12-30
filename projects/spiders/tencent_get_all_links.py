@@ -1,90 +1,82 @@
 import re
 import requests
-from bs4 import BeautifulSoup
-
-"""
-和zy进行腾讯会议, 他直接启发我就是拼接, 点点点...
-"""
 
 data_url = "https://pbaccess.video.qq.com/trpc.vector_layout.page_view.PageService/getPage?video_appid=3000010"
-detail_url = "https://pbaccess.video.qq.com/trpc.universal_backend_service.page_server_rpc.PageServer/GetPageData?video_appid=3000010&vplatform=2&vversion_name=8.2.96"
 
-page_index = 1
-
-payload = {
-    "page_context": {
-        "page_index": f"{page_index}"
-    },
-    "page_params": {
-        "page_id": "channel_list_second_page",
-        "page_type": "operation",
-        "channel_id": "100119",
-        "filter_params": "sort=75",
-        "page": f"{page_index}"
-    },
-    "page_bypass_params": {
-        "params": {
-            "page_id": "channel_list_second_page",
-            "page_type": "operation",
-            "channel_id": "100119",
-            "filter_params": "sort=75",
-            "page": f"{page_index}",
-            "caller_id": "3000010",
-            "platform_id": "2",
-            "data_mode": "default",
-            "user_mode": "default"
-        },
-        "scene": "operation",
-        "abtest_bypass_id": "65ffa94b4e3c21c2"
-    }
-}
-
-headers = {
-    "authority": "pbaccess.video.qq.com",
-    "accept": "application/json, text/plain, */*",
-    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "content-type": "application/json",
-    "origin": "https://v.qq.com",
-    "referer": "https://v.qq.com/",
-    "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": '"Windows"',
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-site",
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-}
-
-def get_links():
+def get_links(start, end):
     cids = []
     urls = []
     urlss = []
-    for page_index in range(10, 60):
-        response = requests.post(data_url, headers=headers, json=payload)
-        data = response.json()
-        cards = data['data']['CardList'][0]['children_list']['list']['cards']
-        for card in cards:
-            # print(card['params']['cid'])
-            cids.append(card['params']['cid'])
-            url = "https://v.qq.com/x/cover/" + card['params']['cid'] + ".html"
-            urls.append(url)
-        # print(urls)
+    page_index = 1
+    for page_index in range(start, end):
+        payload = {
+            "page_context": {
+                "page_index": f"{page_index}"
+            },
+            "page_params": {
+                "page_id": "channel_list_second_page",
+                "page_type": "operation",
+                "channel_id": "100113",
+                "filter_params": "sort=75",
+                "page": f"{page_index}"
+            },
+            "page_bypass_params": {
+                "params": {
+                    "page_id": "channel_list_second_page",
+                    "page_type": "operation",
+                    "channel_id": "100113",
+                    "filter_params": "sort=75",
+                    "page": f"{page_index}",
+                    "caller_id": "3000010",
+                    "platform_id": "2",
+                    "data_mode": "default",
+                    "user_mode": "default"
+                },
+                "scene": "operation",
+                "abtest_bypass_id": "65ffa94b4e3c21c2"
+            }
+        }
+
+        headers = {
+            "authority": "pbaccess.video.qq.com",
+            "accept": "application/json, text/plain, */*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "content-type": "application/json",
+            "origin": "https://v.qq.com",
+            "referer": "https://v.qq.com/",
+            "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Windows"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        }
+        try:
+            response = requests.post(data_url, headers=headers, json=payload)
+            data = response.json()
+            cards = data['data']['CardList'][0]['children_list']['list']['cards']
+            for card in cards:
+                cids.append(card['params']['cid'])
+                url = "https://v.qq.com/x/cover/" + card['params']['cid'] + ".html"
+                urls.append(url)
+        except Exception as e:
+            print(e)
+
 
     vid_pattern = r'"vid"\s*:\s*"([^"]+)"'
     for url in urls:
-        response = requests.get(url, headers=headers).text
-        # print(response)
-        match = re.search(vid_pattern, response)
-        if match:
-            vid = match.group(1)
-            # print(vid)
-            urll = url.split(".html")
-            # print(urll)
-            urll = urll[0] + "/" + str(vid) + ".html"
-            # print(urll)
-            urlss.append(urll)
+        try:
+            response = requests.get(url, headers=headers).text
+            match = re.search(vid_pattern, response)
+            if match:
+                vid = match.group(1)
+                urll = url.split(".html")
+                urll = urll[0] + "/" + str(vid) + ".html"
+                urlss.append(urll)
+        except Exception as e:
+            print(e)
     print(urlss)
     return urlss
+    
 
-if __name__ == "__main__": 
-    get_links()
