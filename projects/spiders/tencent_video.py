@@ -243,4 +243,5 @@ def get_and_download(start, end, path):
 if __name__ == '__main__':
     # get_and_download(120, 200 "电影_3.xlsx") # 电影完全get
     # get_and_download(180, 200, "动漫_2.xlsx") # 动漫完全get
-     get_and_download(0, 200, "纪录片.xlsx")
+    # get_and_download(0, 200, "纪录片.xlsx") # 纪录片完全get
+    get_and_download(0, 200, "少儿.xlsx")

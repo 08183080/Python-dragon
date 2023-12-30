@@ -25,7 +25,7 @@ def process_page(start, end, result_list):
             "page_params": {
                 "page_id": "channel_list_second_page",
                 "page_type": "operation",
-                "channel_id": "100105",
+                "channel_id": "100150",
                 "filter_params": "sort=75",
                 "page": f"{page_index}"
             },
@@ -33,7 +33,7 @@ def process_page(start, end, result_list):
                 "params": {
                     "page_id": "channel_list_second_page",
                     "page_type": "operation",
-                    "channel_id": "100105",
+                    "channel_id": "100150",
                     "filter_params": "sort=75",
                     "page": f"{page_index}",
                     "caller_id": "3000010",
