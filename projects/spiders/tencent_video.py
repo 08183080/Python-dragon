@@ -237,7 +237,7 @@ def get_and_download(start, end, path):
     data = pd.DataFrame(infos, columns=["title", "hot_trend", "story", "area", "score", "categories", "date", "comments", "comments_num"])
     # print(data)
     data.to_excel(path,index=False)
-    print(f"{path}文件写入!")
+    print(f"{path}文件写入{len(data)}条数据!")
 
 
 if __name__ == '__main__':
