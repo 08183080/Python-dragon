@@ -210,7 +210,7 @@ def process_page(start, end, links, result_queue):
     
     result_queue.put(infos)
 
-def get_and_download(start, end):
+def get_and_download(start, end, path):
     links =get_links_with_multithreading(start, end)
     result_queue = queue.Queue()  # 创建一个队列用于存储子线程的结果
     threads = []
@@ -235,9 +235,10 @@ def get_and_download(start, end):
     # print(infos)
 
     data = pd.DataFrame(infos, columns=["title", "hot_trend", "story", "area", "score", "categories", "date", "comments", "comments_num"])
-    print(data)
-    data.to_csv("电视剧_1.xlsx",encoding="utf-8",index=False)
+    # print(data)
+    data.to_csv(path, encoding="utf-8",index=False)
+    print(f"{path}文件写入!")
 
 
 if __name__ == '__main__':
-    get_and_download(1, 100)
+    get_and_download(1, 100, "电视剧_1.xlsx")
