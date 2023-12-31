@@ -71,6 +71,8 @@ Python自动化爬取指定网站的数据信息。
 # Python和网络安全
 # Python和知识图谱
 # Python和少儿教育
+- [ ] 贪吃蛇游戏
+- [ ] 太空大战游戏
 # Python和Web开发
 # Python和App开发
 # Python和量化金融
