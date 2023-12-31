@@ -6,3 +6,5 @@
 - [ ] 感谢requests库!!!!!!
 ## 文件处理
 - [ ] excel的文件处理和pandas, openpyxl密切联系
+- [ ] pdf2text目录是我失败的外包项目，诚实守信，对客户负责!
+- [ ] 
