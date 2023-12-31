@@ -56,7 +56,7 @@ Python自动化爬取指定网站的数据信息。
 - [x] Python的异常处理机制
 
 # Python学习路线
-- [ ] 【Python核心技术与实战】是【极客时间】的课程, 不错的
+- [x] 【Python核心技术与实战】是【极客时间】的课程, 不错的
 
 # Python和人工智能
 - [ ] 复现SVD, Stable Video Diffuzion (immage2video)
@@ -70,4 +70,6 @@ Python自动化爬取指定网站的数据信息。
 # Python和少儿教育
 # Python和Web开发
 # Python和App开发
+# Python和量化金融
+# Python和游戏开发
 # Python和自动化测试
