@@ -60,6 +60,10 @@ Python自动化爬取指定网站的数据信息。
 
 # Python和人工智能
 - [ ] 复现SVD, Stable Video Diffuzion (immage2video)
+# Python-dragon项目各目录
+- [ ] roadmap: python学习路线
+- [ ] projects: 我自己做过的Python项目
+
 # Python和网络安全
 # Python和知识图谱
 # Python和少儿教育
