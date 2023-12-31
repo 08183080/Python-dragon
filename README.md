@@ -1,5 +1,5 @@
 # Python
-君子有龙蛇之变，Python寓意蟒蛇，我的名字则是龙龙。
+君子有龙蛇之变，Python寓意蟒蛇，我的名字则是龙。
 
 Python是很有用的语言。广泛应用在自动化、人工智能、数据分析的领域。
 
@@ -46,7 +46,9 @@ Python自动化爬取指定网站的数据信息。
   - [ ] 招聘网站 的 算法 人才 
 
 # Python 基础篇
-- [x] Python的普通输入输出、文件输入输出
+- [x] Python的普通输入输出、文件输入输出【文件处理】
+  - [ ] flush()函数可以写一次缓存清理一次缓存
+  - [ ] seek(0, 2) 可以直接到文件的最末尾 
 - [x] Python的JSON序列化
 - [ ] Python和正则表达式
 - [x] Python的基础数据结构(列表、元组、字典、集合、字符串、堆、栈、树、图)
@@ -57,5 +59,5 @@ Python自动化爬取指定网站的数据信息。
 
 # Python和人工智能
 - [ ] 复现SVD, Stable Video Diffuzion (immage2video)
-# Python和网络安全（待）
-# Python和知识图谱（待）
+# Python和网络安全
+# Python和知识图谱
