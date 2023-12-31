@@ -1,5 +1,5 @@
 # GPT开发者
-# openai api key使用
+## openai api key使用
 openai api key是在创建的时候你去复制的\
 官网免费, api收费, 这德行。。。\
 api key是关于api的key, 一般都是一串挺长的字符串...
