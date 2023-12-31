@@ -258,8 +258,8 @@ if __name__ == '__main__':
     # get_and_download(180, 200, "动漫_2.xlsx") # 动漫完全get
     # get_and_download(0, 200, "纪录片.xlsx") # 纪录片完全get
     # get_and_download(0, 200, "少儿.xlsx") # 少儿完全get
-    get_and_download(0, 50, "电视剧_1.xlsx") # 电视剧WTF  openpyxl写入非法字符错误!
-    get_and_download(50, 100, "电视剧_2.xlsx")
-    get_and_download(100, 150, "电视剧_3.xlsx")
+    # get_and_download(0, 50, "电视剧_1.xlsx") # 电视剧WTF  openpyxl写入非法字符错误!
+    # get_and_download(50, 100, "电视剧_2.xlsx")
+    # get_and_download(100, 150, "电视剧_3.xlsx")
     get_and_download(150, 200, "电视剧_4.xlsx")
     # get_and_download(0, 200, "综艺片.xlsx") # 综艺片完全get
