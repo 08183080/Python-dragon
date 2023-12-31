@@ -76,3 +76,5 @@ Python自动化爬取指定网站的数据信息。
 # Python和量化金融
 # Python和游戏开发
 # Python和自动化测试
+# Python和芯片科技
+# Python和嵌入式软件
