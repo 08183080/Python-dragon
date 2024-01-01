@@ -3,7 +3,7 @@ import time
 import requests
 from lxml import etree
 
-one_url = "https://v.youku.com/v_show/id_XNTY0ODE0MzU2.html"
+one_url = "https://v.youku.com/v_show/id_XNjAyODY3MzYxNg==.html"
 
 """
 UA伪装json模板
@@ -36,11 +36,13 @@ def get_conetent(url):
     desc = "" # 简介
     actors = "" # 演员
     directors = "" # 导演
-    hot_trend  = "" # 热度
+    heat  = "" # 热度
 
     title_pattern = r'"videoTitle":\s*"([^"]+)"'
     intro_pattern = r'"introSubTitle":\s*"([^"]+)"'
     desc_pattern = r'"desc":\s*"([^"]+)"'
+    heat_pattern = r'"heat"\s*:\s*(\d+)'
+    directors_pattern = r'"subtitle":\s*"导演"(.*?)"title":\s*"([^"]+)"'  # wait
 
     fuck_words = "<script>sessionStorage.x5referer = window.location.href;window.location.replace" 
 
@@ -67,10 +69,20 @@ def get_conetent(url):
             desc = m3.group(1)
             print(desc) 
         
+        m4 = re.search(heat_pattern, response)
+        if m4:
+            heat = m4.group(1)
+            print(heat)
+
+        m5 = re.search(directors_pattern, response)
+        if m5:
+            director = m5.group(1)
+            print(director)
+        
     except Exception as e:
         print(f"处理{url}失败~")
     
-    return title, intro, desc
+    return title, intro, desc, heat
 
 get_conetent(one_url)
 
