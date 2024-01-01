@@ -1,0 +1,43 @@
+"subtitleType": "GENERAL",
+"img": "http:\u002F\u002Fm.ykimg.com\u002F051400005D146227AFB4E3083F0E96B7",
+"subtitle": "导演",
+"action": {
+    "type": "JUMP_TO_NATIVE",
+    "value": "youku:\u002F\u002Fpage\u002Fnode?bizKey=NODE_PAGE&nodeKey=FEMALE_STARSEARCH&bizContext={\"selectTab\":\"2001\",\"star\":\"348819\",\"tabs\":\"[{\\\"id\\\":\\\"2001\\\",\\\"title\\\":\\\"热门\\\",\\\"key\\\":\\\"all\\\"}]\",\"sdkver\":327,\"k\":\"乌尔善\",\"version\":\"1.0.0\"}",
+    "contentType": null,
+    "contentValue": null,
+    "reportDisabled": false,
+    "extra": {
+        "type": "NORMAL"
+    },
+    "callback": null,
+    "reportConfig": null,
+    "report": {
+        "pageName": "page_playpage",
+        "arg1": "web_detail_info_new",
+        "spmAB": "a2h08.8165823",
+        "spmC": "1_1",
+        "spmD": "2_2",
+        "scmAB": "20140719.apircmd",
+        "scmC": "239960",
+        "scmD": "starcircle_348819",
+        "index": 2,
+        "reportDataOpt": false,
+        "trackInfo": {
+            "component_id": "web_detail_info_new",
+            "pvv_vid": "XNjAyODY3MzYxNg==",
+            "component_instance_id": 240053,
+            "utdid": "xEjfHP4g7hYCAdvkhxssZXp0",
+            "servertime": 1704104374505,
+            "pageid": "PCSHOW_MOVIE_NORMAL",
+            "lifecycle": 1,
+            "drawerid": "36152",
+            "pvv_sid": "6fefbfbd0809484111e7",
+            "cms_req_id": "213c6e7917041043744758283e1b7e"
+        },
+        "utParam": null
+    }
+},
+"personId": 348819,
+"title": "乌尔善",
+"isAliStar": false
