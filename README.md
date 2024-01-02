@@ -63,6 +63,11 @@ Python自动化爬取指定网站的数据信息。
 # Python学习路线
 - [x] 【Python核心技术与实战】是【极客时间】的课程, 不错的
 
+# Python和数学基础
+## 正则表达式
+- [ ] 【学习正则表达式】
+## 线性代数 和 矩阵(matrix)
+## 统计学
 # Python和人工智能
 - [ ] 复现SVD, Stable Video Diffuzion (immage2video)
 # Python-dragon项目各目录
