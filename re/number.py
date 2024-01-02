@@ -5,7 +5,7 @@ import re
 \s: space
 (): capture group
 []
-{}: quanti
+{}: quantifier
 """
 
 def pattern_match(pattern, string):
