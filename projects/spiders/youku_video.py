@@ -98,7 +98,7 @@ def get_and_write(path):
             info = get_conetent(link)
             infos.append(info)
     except Exception as e:
-        print(f"处理link时候出现异常: ", e)
+        print(f"处理{link}时候出现异常: ", e)
     
     df = pd.DataFrame(infos, columns = ["title", "intro", "desc", "heat", "roles"])
 
