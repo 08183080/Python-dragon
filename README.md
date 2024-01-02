@@ -15,10 +15,11 @@ Python是很有用的语言。广泛应用在自动化、人工智能、数据�
 - [x] [日历](https://github.com/08183080/Python-dragon/blob/main/scripts/calendar_gen.py)
 # Python和网络爬虫
 Python自动化爬取指定网站的数据信息。\
-感谢爱摄影的国外小哥写的[requests库](https://github.com/psf/requests)
+感谢爱摄影的国外小哥写的[requests库](https://github.com/psf/requests).
 
 - [x] [谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
-
+## requests特性和使用
+- [ ] streaming requests
 # Python和图像处理
 - [x] 手写检测器, 检测一张图片中的圆形 (hough transform)
 - [x] 手写检测器, 检测一张图片中的所有小圆形
