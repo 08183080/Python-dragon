@@ -94,6 +94,9 @@ Python自动化爬取指定网站的数据信息。\
 - [x] projects: 我自己做过的Python项目
 - [x] scripts: 我入门写的Python文件/目录/图像处理脚本
 - [x] python-core-techs: 【Python核心技术与实战】课程和书的我的手敲代码
+- [x] re: Python和regular/pattern expression的实践笔记
+
+
 # Python和网络安全
 # Python和知识图谱
 # Python和少儿教育
