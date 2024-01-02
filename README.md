@@ -93,3 +93,5 @@ Python自动化爬取指定网站的数据信息。\
 # Python和自动化测试
 # Python和芯片科技
 # Python和嵌入式软件
+## 串口通信
+- [ ] Python用serial库进行与串口通信
