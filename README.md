@@ -20,6 +20,10 @@ Python自动化爬取指定网站的数据信息。\
 - [x] [谷歌/必应/百度图片爬虫](https://mp.weixin.qq.com/s?__biz=Mzk0NzMxOTAxMQ==&mid=2247484552&idx=1&sn=b05e0c1195fc95e280cb299cff2219fd&chksm=c379fd04f40e7412b97240d495fb742cb7c75b914af39c7265cbb33d775390d24b7a5c899085&token=753455615&lang=zh_CN#rd)。
 ## requests特性和使用
 - [ ] streaming requests
+
+# Python和文件处理
+- [ ] excel文件处理用openpyxl库
+- [ ] 数据处理分析神器pandas
 # Python和图像处理
 - [x] 手写检测器, 检测一张图片中的圆形 (hough transform)
 - [x] 手写检测器, 检测一张图片中的所有小圆形
