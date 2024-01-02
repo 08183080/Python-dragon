@@ -1,8 +1,9 @@
 import re
 import time
 import requests
+import pandas as pd
+from youku_get_links import get_all_links
 
-url = "https://www.youku.com/category/data?session=%7B%22subIndex%22%3A48%2C%22trackInfo%22%3A%7B%22parentdrawerid%22%3A%2234441%22%7D%2C%22spmA%22%3A%22a2h05%22%2C%22level%22%3A2%2C%22spmC%22%3A%22drawer3%22%2C%22spmB%22%3A%228165803_SHAIXUAN_ALL%22%2C%22index%22%3A1%2C%22pageName%22%3A%22page_channelmain_SHAIXUAN_ALL%22%2C%22scene%22%3A%22search_component_paging%22%2C%22scmB%22%3A%22manual%22%2C%22path%22%3A%22EP967584%22%2C%22scmA%22%3A%2220140719%22%2C%22scmC%22%3A%2234441%22%2C%22from%22%3A%22SHAIXUAN%22%2C%22id%22%3A227939%2C%22category%22%3A%22%E5%8A%A8%E6%BC%AB%22%7D&params=%7B%22type%22%3A%22%E5%8A%A8%E6%BC%AB%22%7D&pageNo=3"
 one_url = "https://v.youku.com/v_show/id_XNTk4MDM2MTc4NA==.html?spm=a2hja.12701310.filter.4212&s=dcaed107ed44453089fe"
 
 """
@@ -12,7 +13,8 @@ origin它指示请求的发起源,即发送请求的网页或者应用程序的�
 referer表示当前请求的上一个网页地址
 """
 
-headers= {
+def get_conetent(url):
+    headers= {
     "authority": "v.youku.com",
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "accept-encoding": "gzip, deflate, br",
@@ -29,8 +31,6 @@ headers= {
     "upgrade-insecure-requests": "1",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 }
-
-def get_conetent(url):
     title = None # 名称
     intro = "" # 地区+时间+类型
     desc = "" # 简介
@@ -77,6 +77,9 @@ def get_conetent(url):
 
         roles = re.findall(directors_pattern, response)
         roles = roles[2:14] # some data noise
+        
+        print(f"{title}处理成功...")
+        time.sleep(0.2)
         # print(roles)
         # if m5:
         #     director = m5.group()
@@ -86,28 +89,25 @@ def get_conetent(url):
     
     return title, intro, desc, heat, roles
 
-def get_all_links(url):
-    payload = {
-        "session": {"subIndex":48,"trackInfo":{"parentdrawerid":"34441"},"spmA":"a2h05","level":2,"spmC":"drawer3","spmB":"8165803_SHAIXUAN_ALL","index":1,"pageName":"page_channelmain_SHAIXUAN_ALL","scene":"search_component_paging","scmB":"manual","path":"EP400885","scmA":"20140719","scmC":"34441","from":"SHAIXUAN","id":227939,"category":"电影"},
-        "params": {"type":"电影"},
-        "pageNo": "1"
-    }
-    url = ""
-    urls = []
-    try:
-        response = requests.get(url, headers=headers)
-        data = response.json()
+def get_and_write(path):
+    infos = []
+    links = get_all_links()
 
-        videos = data['data']['filterData']['listData']
-        for video in videos:
-            url = "https:" + video['videoLink']
-            print(url)
-            urls.append(url)
+    try:
+        for link in links:
+            info = get_conetent(link)
+            infos.append(info)
     except Exception as e:
-        print(f"处理{url}获取link时候出现问题...")
-    return urls
+        print(f"处理link时候出现异常: ", e)
     
+    df = pd.DataFrame(infos, columns = ["title", "intro", "desc", "heat", "roles"])
+
+    try:
+        df.to_excel(path,index=False)
+        print(f"{path}文件写入{len(df)}条数据!")
+    except Exception as e:
+        print(f"写入{path}出现错误: ", e)
 
 if __name__ == "__main__":
-    print(get_conetent(one_url))
-    # get_all_links(url)
+    # print(get_conetent(one_url))
+    get_and_write("电影.xlsx")
