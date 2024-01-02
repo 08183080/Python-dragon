@@ -1,10 +1,13 @@
 import re
 
 """
-\d: 0-9, digital
+\d: 0-9, digital, \d == [0-9] == [0123456789]
+\D: \d reverse, \D == [^0-9] == [^\d]
 \s: space
+\w: word, letter, _  \w == [_0-9a-zA-Z]
+\W: \W == [^_0-9a-zA-Z]
 (): capture group
-[]
+[]: metacharacter
 {}: quantifier
 """
 
