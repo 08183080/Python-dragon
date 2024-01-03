@@ -5,6 +5,7 @@
 - [ ] BRE: Basic RE
 - [ ] ERE: Extended RE
 - [ ] 15 metacharacter in RE: .^$+*?|()[]{}\-, not literal
+- [ ] RE can backtrack to find the anwser
 # Practice
 - [ ] 识别 上海电话号码 的正则表达式
 - [ ] Unix上的工具sed, grep
