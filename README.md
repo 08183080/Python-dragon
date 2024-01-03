@@ -130,3 +130,7 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 李笑来, 教英语, 会编程, 炒币圈
 # Python和数据库
 - [ ] 我的室友 大哥 就是 深耕 数据库(database)
+- [ ] Python中文件读写指针定位函数seek类似于数据库中的cursor游标
+# Python和操作系统
+# Python和区块链
+# Python和电脑维修
