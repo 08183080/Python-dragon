@@ -5,6 +5,7 @@ import requests
 base_url = "https://youku.com/category/data"
 
 def get_all_links():
+    page_index = 1
     headers= {
         "authority": "youku.com",
         "method": "GET",
@@ -25,15 +26,15 @@ def get_all_links():
     }
 
     payload = {
-        "session": '{"subIndex":840,"trackInfo":{"parentdrawerid":"34441"},"spmA":"a2h05","level":2,"spmC":"drawer3","spmB":"8165803_SHAIXUAN_ALL","index":1,"pageName":"page_channelmain_SHAIXUAN_ALL","scene":"search_component_paging","scmB":"manual","path":"EP69977","scmA":"20140719","scmC":"34441","from":"SHAIXUAN","id":227939,"category":"电影"}',
+        "session": '{"subIndex":48,"trackInfo":{"parentdrawerid":"34441"},"spmA":"a2h05","level":2,"spmC":"drawer3","spmB":"8165803_SHAIXUAN_ALL","index":1,"pageName":"page_channelmain_SHAIXUAN_ALL","scene":"search_component_paging","scmB":"manual","path":"EP788061","scmA":"20140719","scmC":"34441","from":"SHAIXUAN","id":227939,"category":"电影"}',
         "params": '{"type":"电影"}',
-        "pageNo": 36
+        "pageNo": 3
     }
 
     urls = []
     try:
         response = requests.get(base_url, headers=headers, params=payload)
-        # print(response.text)
+        print(response.text)
         data = response.json()
         # print(data)
         videos = data['data']['filterData']['listData']

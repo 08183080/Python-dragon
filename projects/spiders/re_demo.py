@@ -18,4 +18,3 @@ m = re.search(pattern, text)
 print(m)
 if m:
     print(m.group(1))
-
