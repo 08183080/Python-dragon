@@ -32,10 +32,10 @@ def get_all_links():
         "pageNo": 123
     }
 
-    
     for i in range(123):
         urls = []
         try:
+            time.sleep(2)
             response = requests.get(base_url, headers=headers, params=payload)
             print(response.text)
             data = response.json()
