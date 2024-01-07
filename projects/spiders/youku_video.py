@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 from youku_get_links import get_all_links
 
-one_url = "https://v.youku.com/v_show/id_XNTk4MDM2MTc4NA==.html?spm=a2hja.12701310.filter.4212&s=dcaed107ed44453089fe"
+one_url = "https://v.youku.com/v_show/id_XNDI0NzkwNTgyNA==.html?spm=a2hja.12701310.filter.2594&s=07b8722657364fa2a485&s=07b8722657364fa2a485"
 
 """
 UA伪装json模板
@@ -12,6 +12,12 @@ origion和referer字段是啥?
 origin它指示请求的发起源,即发送请求的网页或者应用程序的源头
 referer表示当前请求的上一个网页地址
 """
+
+def get_comment(url):
+    """
+    获取视频的评论
+    """
+    pass
 
 def get_conetent(url):
     headers= {
@@ -109,5 +115,5 @@ def get_and_write(path):
         print(f"写入{path}出现错误: ", e)
 
 if __name__ == "__main__":
-    # print(get_conetent(one_url))
-    get_and_write("电影.xlsx")
+    print(get_conetent(one_url))
+    # get_and_write("电影.xlsx")
