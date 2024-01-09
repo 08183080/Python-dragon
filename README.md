@@ -96,8 +96,6 @@ Python自动化爬取指定网站的数据信息。\
 - [x] scripts: 我入门写的Python文件/目录/图像处理脚本
 - [x] python-core-techs: 【Python核心技术与实战】课程和书的我的手敲代码
 - [x] re: Python和regular/pattern expression的实践笔记
-
-
 # Python和网络安全
 # Python和知识图谱
 # Python和少儿教育
@@ -134,6 +132,14 @@ Python自动化爬取指定网站的数据信息。\
 # Python和数据库
 - [ ] 我的室友 大哥 就是 深耕 数据库(database)
 - [ ] Python中文件读写指针定位函数seek类似于数据库中的cursor游标
+
+# Python和设计模式
+- [ ] Design Pattern是OOP思想的高度提炼和模板化 
+- [ ] 单例模式
+  - [ ] Singleton Pattern, 确保一个类只有一个对象被创建 
+  - [ ] Ensure a class has only one instance,and provide a global point of access to it.
+  - [ ] 突然发现在intel实习的第一个项目可以用单例模式来设计, zy提醒
+
 # Python和操作系统
 # Python和区块链
 # Python和电脑维修

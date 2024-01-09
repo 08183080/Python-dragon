@@ -48,7 +48,7 @@ def get_all_links():
             time.sleep(1)
         except Exception as e:
             print(f"处理{base_url}获取link时候出现异常: ", e)
-        with open("youku_video.txt", "a") as f:
+        with open("youku.txt", "a") as f:
             for url in urls:
                 print(url)
                 f.write(url)
