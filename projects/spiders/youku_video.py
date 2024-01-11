@@ -5,9 +5,8 @@ import pandas as pd
 from youku_get_links import get_all_links
 
 one_url = "https://v.youku.com/v_show/id_XNDI0NzkwNTgyNA==.html?spm=a2hja.12701310.filter.2594&s=07b8722657364fa2a485&s=07b8722657364fa2a485"
-comment_url = "https://acs.youku.com/h5/mtop.alidme.xtop.tv.order.status.get/1.0"
-url = 'https://acs.youku.com/h5/mtop.youku.columbus.ycp.query/1.0/?jsv=2.6.1&appKey=24679788&t=1704726300934&sign=ce1278e095528c2db6d8333eca4e6b84&api=mtop.youku.columbus.ycp.query&type=originaljson&v=1.0&ecode=1&dataType=json&data=%7B%22ms_codes%22%3A%222019061000%22%2C%22system_info%22%3A%22%7B%7D%22%2C%22params%22%3A%22%7B%5C%22bizKey%5C%22%3A%5C%22ycp%5C%22%2C%5C%22pageSize%5C%22%3A10%2C%5C%22time%5C%22%3A1704726300934%2C%5C%22app%5C%22%3A%5C%225200-C2cNqy93%5C%22%2C%5C%22objectType%5C%22%3A1%2C%5C%22nodeKey%5C%22%3A%5C%22MAINPAGE_SUBPAGE%5C%22%2C%5C%22page%5C%22%3A2%2C%5C%22objectCode%5C%22%3A%5C%22XNjAzOTM3ODY2MA%3D%3D%5C%22%2C%5C%22utdid%5C%22%3A%5C%22xEjfHP4g7hYCAdvkhxssZXp0%5C%22%2C%5C%22gray%5C%22%3A0%2C%5C%22tabCode%5C%22%3A101%7D%22%2C%22debug%22%3A0%7D'
-
+comment_url = "https://acs.youku.com/h5/mtop.youku.columbus.ycp.query/1.0"
+url = "https://acs.youku.com/h5/mtop.youku.columbus.ycp.query/1.0/?jsv=2.6.1&appKey=24679788&t=1704971068300&sign=c3d6dfddee1ec390f4d1fa886f2ce770&api=mtop.youku.columbus.ycp.query&type=originaljson&v=1.0&ecode=1&dataType=json&data=%7B%22ms_codes%22%3A%222019061000%22%2C%22system_info%22%3A%22%7B%7D%22%2C%22params%22%3A%22%7B%5C%22bizKey%5C%22%3A%5C%22ycp%5C%22%2C%5C%22pageSize%5C%22%3A10%2C%5C%22time%5C%22%3A1704971068297%2C%5C%22app%5C%22%3A%5C%225200-C2cNqy93%5C%22%2C%5C%22objectType%5C%22%3A1%2C%5C%22nodeKey%5C%22%3A%5C%22MAINPAGE_SUBPAGE%5C%22%2C%5C%22page%5C%22%3A5%2C%5C%22objectCode%5C%22%3A%5C%22XNTk3NzEyOTIyMA%3D%3D%5C%22%2C%5C%22utdid%5C%22%3A%5C%22xEjfHP4g7hYCAdvkhxssZXp0%5C%22%2C%5C%22gray%5C%22%3A0%2C%5C%22tabCode%5C%22%3A101%7D%22%2C%22debug%22%3A0%7D"
 """
 UA伪装json模板
 origion和referer字段是啥?
@@ -25,7 +24,7 @@ def get_comment():
         "Accept-Language": "zh-CN,zh;q=0.9",
         "Connection": "keep-alive",
         "Content-Type": "application/x-www-form-urlencoded",
-        "Cookie": "isI18n=false; cna=xEjfHP4g7hYCAdvkhxssZXp0; __ysuid=17040947675285Ra; youku_history_word=%5B%22%E6%97%A0%E9%97%B4%E9%81%93%22%5D; __ayft=1704158431897; __aysid=1704539138854hkh; __ayscnt=2; xlly_s=1; __arycid=dc-3-00; __arcms=dc-3-00; l=fBS_NpURPp3wZWupBO5ZKurza77tCLOf1sPzaNbMiIEGB6qsR3Q3JPKQVeYO3lT1WhQNesNwJ3S3hc2kBxYAZyIInxv9-Qy6XFHmndhyN3pR.; _m_h5_tk=e716162ff851dd1f47dccdfe4218aea4_1704727826654; _m_h5_tk_enc=3aa6f735a901cb95121fa1a0916c5197; __arpvid=1704724116959Z3jZIN-1704724116964; __aypstp=18; __ayspstp=16; __ayvstp=27; __aysvstp=27; tfstk=eczy7hsktaQPg4R_4m0E7StWnX3-BVB6-yMItWVnNYDoOWb3L5wJVDX-Pyy4_oL7d4T73wyTDpnKp8M0D7zwNYHL2w4YRjSoxyMQ86u8luTIFT3UtRgFCO_157F-k2X1CNCyrq0dP55KJNN8wIAyK1Zc5e5I7Tsb_ACHYUmOI5H0oOlGRi-kdxYH-zbK4A-Ipjh4uknrIm2w-maqa0kgZgzHpjbsWyEyKHooMjk1gskwYDVJOw0bIHKKmVhqC_GWvHnoGetz7FxpvmcrgA1WS; isg=BI-P9j-hNhprkjLo_fwgcvqXHiOZtOPWr_bvjqGbAf8icK1yqYfHJ_MmcqBOCLtO",
+        "Cookie": "isI18n=false; cna=xEjfHP4g7hYCAdvkhxssZXp0; __ysuid=17040947675285Ra; youku_history_word=%5B%22%E6%97%A0%E9%97%B4%E9%81%93%22%5D; l=fBS_NpURPp3wZWupBO5ZKurza77tCLOf1sPzaNbMiIEGB6qsR3Q3JPKQVeYO3lT1WhQNesNwJ3S3hc2kBxYAZyIInxv9-Qy6XFHmndhyN3pR.; __ayft=1704971020661; __aysid=1704971020661uVB; __ayscnt=1; _m_h5_tk=25ea0d967f01680bc0abb8f126959c67_1704975880517; _m_h5_tk_enc=ee0f32d06a6b501db1b106e240e931a5; xlly_s=1; __arpvid=17049710326508YgEfH-1704971032656; __arycid=dc-3-00; __arcms=dc-3-00; __aypstp=2; __ayspstp=2; __ayvstp=3; __aysvstp=3; isg=BFRUMYN2zZih_VnZ8hWrEx3-JZLGrXiXaC8En-4-FV7F2fcjFr9mJhkX2dHBIbDv; tfstk=eYcJ7njYsnxk2TjanQpD8QanvF80db3zl0u1tkqldmnxWobuqzmlOxnI08q7-QrCJmgaV4xeaZDqQ057L9YWOmkZwa2yFaGjH0u_EWcK86UIRD8zxUJmz4PUOhxivC0rziNa-oOiBpyKLWtMjIXcl8-uOYxx0MsbXGIWwO5SNX4WBtG-GkAcizy8fqpNO6L7mGqZPoCCOuHUew07D61IMgPtsfef-GqT-TTvk9WUFrSVFFQLA7KrBrEMyBBFL-84klYvk96CAEzYjULdL9y2u",
         "Host": "acs.youku.com",
         "Origin": "https://v.youku.com",
         "Referer": "https://v.youku.com/v_show/id_XNTk3NzEyOTIyMA==.html?lang=%E8%8B%B1%E8%AF%AD&spm=a2hje.13141534.1_4.d_1_21&scm=20140719.apircmd.239009.video_XNTk3NzEyOTIyMA==",
@@ -41,14 +40,14 @@ def get_comment():
     payload = {
         "jsv": "2.6.1",
         "appKey": "24679788",
-        "t": "1704724129394",
-        "sign": "5d680eaae12b7d35ee71456a3b1260d0",
-        "api": "mtop.youku.ycp.comment.detailpage.module.get",
+        "t": "1704971068300",
+        "sign": "c3d6dfddee1ec390f4d1fa886f2ce770",
+        "api": "mtop.youku.columbus.ycp.query",
         "type": "originaljson",
         "v": "1.0",
         "ecode": "1",
         "dataType": "json",
-        "data": '{"app":"100-DDwODVkv","time":1704724129393,"objectCode":"XNTk3NzEyOTIyMA==","objectType":1,"dataSource":"COMMENT_REPLY_LIST_DATASOURCE","page":1,"limit":2,"lastId":false,"bizParam":"{\"commentId\":1000907380228}","sign":"1cba82f56cf3300ed0218482dddd1dd2"}'
+        "data": {"ms_codes":"2019061000","system_info":"{}","params":"{\"bizKey\":\"ycp\",\"pageSize\":10,\"time\":1704971068297,\"app\":\"5200-C2cNqy93\",\"objectType\":1,\"nodeKey\":\"MAINPAGE_SUBPAGE\",\"page\":5,\"objectCode\":\"XNTk3NzEyOTIyMA==\",\"utdid\":\"xEjfHP4g7hYCAdvkhxssZXp0\",\"gray\":0,\"tabCode\":101}","debug":0}
     }
 
     response = requests.get(url, headers=headers)
@@ -126,7 +125,7 @@ def get_conetent(url):
         #     director = m5.group()
         #     print(director)
     except Exception as e:
-        print(f"处理{url}失败~")
+        print(f"处理{url}失败{e}~")
     
     return title, intro, desc, heat, roles
 
@@ -153,3 +152,4 @@ if __name__ == "__main__":
     # print(get_conetent(one_url))
     # get_and_write("电影.xlsx")
     get_comment()
+
