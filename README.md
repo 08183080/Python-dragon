@@ -24,6 +24,8 @@ Python自动化爬取指定网站的数据信息。\
 # Python和文件处理
 - [ ] excel文件处理用openpyxl库
 - [ ] 数据处理分析神器pandas
+- [ ] 常用IO函数: read(), readline(), write(), seek(offset, whence), tell()
+- [ ] 打开文本文件mode: binary, text
 # Python和图像处理
 - [x] 手写检测器, 检测一张图片中的圆形 (hough transform)
 - [x] 手写检测器, 检测一张图片中的所有小圆形
