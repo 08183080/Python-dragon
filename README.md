@@ -149,5 +149,10 @@ Python自动化爬取指定网站的数据信息。\
   - [ ] 突然发现在intel实习的第一个项目可以用单例模式来设计, zy提醒
 
 # Python和操作系统
-# Python和区块链
+# Python和区块链 (BlockChain)
+- [ ] 区块链的魅力是什么?
+- [ ] 区块链入门之路
 # Python和电脑维修
+# Python和其他PL
+## Rust
+## Move
