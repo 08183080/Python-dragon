@@ -156,3 +156,5 @@ Python自动化爬取指定网站的数据信息。\
 # Python和其他PL
 ## Rust
 ## Move
+- [ ] Sui链
+- [ ] Aptos链
