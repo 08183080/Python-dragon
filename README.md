@@ -168,4 +168,5 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 【抢票】抢高铁票/演唱会票, 抢茅台/手机hhh
 # Python Q&A网站
 - [ ] [StackOverflow Python](https://stackoverflow.com/questions/tagged/python) 在这帮别人解决python问题吧
+  - [ ] [Invoking function after KeyboardInterrupt](https://stackoverflow.com/questions/77833699/invoking-function-after-keyboardinterrupt)  
 - [ ] [Quora Python](https://www.quora.com/topic/Python-programming-language-1) 在这讨论Python吧
