@@ -170,3 +170,6 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] [StackOverflow Python](https://stackoverflow.com/questions/tagged/python) 在这帮别人解决python问题吧
   - [ ] [Invoking function after KeyboardInterrupt](https://stackoverflow.com/questions/77833699/invoking-function-after-keyboardinterrupt)  
 - [ ] [Quora Python](https://www.quora.com/topic/Python-programming-language-1) 在这讨论Python吧
+# 极客的一些很酷的事情
+- [ ] 搞搞硬件, 修电脑
+- [ ] 搭建个人网站
