@@ -66,14 +66,18 @@ Python自动化爬取指定网站的数据信息。\
 # Python 基础篇
 - [x] Python的普通输入输出、文件输入输出【文件处理】
   - [x] flush()函数可以写一次缓存清理一次缓存
-  - [x] seek(0, 2) 可以直接到文件的最末尾 
+  - [x] seek(0, 2) 可以直接到文件的最末尾
+  - [x] 文件打开模式有字节模式和文本模式 
 - [x] Python的JSON序列化
+  - [ ] load和xxx方法 
 - [ ] Python和正则表达式
 - [x] Python的基础数据结构(列表、元组、字典、集合、字符串、堆、栈、树、图)
+  - [ ] Python中函数也是对象, 对象也可以变成函数使用, 实现__call__帆帆发即可 
 - [x] Python的异常处理机制
 
 # Python学习路线
 - [x] 【Python核心技术与实战】是【极客时间】的课程, 不错的
+- [ ] 【流畅的Python】【fluent python】经典书籍, 代码示例优雅: https://github.com/08183080/fluent-python
 
 # Python和编译原理
 - [ ] 词法分析
