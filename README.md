@@ -78,9 +78,11 @@ Python自动化爬取指定网站的数据信息。\
 - [x] Python的异常处理机制
 
 # Python学习路线
+## 书籍
 - [x] 【Python核心技术与实战】是【极客时间】的课程, 不错的
 - [ ] 【流畅的Python】【fluent python】经典书籍, 代码示例优雅: https://github.com/08183080/fluent-python
-
+## 课程
+- [ ] 【CS50's Introduction to Programming with Python】【哈佛Python基础课程】
 # Python和编译原理
 - [ ] 词法分析
 - [ ] 语法分析
