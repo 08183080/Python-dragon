@@ -180,6 +180,8 @@ Python自动化爬取指定网站的数据信息。\
 ## JS
 - [ ] JS是网景公司工程师花了13天提出的语言
 ## Verilog
+# Python 和 commands
+Python和那些使用Python时候很basic的commands: https://github.com/08183080/awesome-commands
 # Python 项目驱动式学习
 ## 学完爬虫可以做什么?
 - [ ] 【运营公众号】譬如公众号开个服务22元一年, 实时爬取微博更新评论, 提供给客户 (偶遇的老哥建议的)【热水来了】
