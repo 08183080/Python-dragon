@@ -195,3 +195,5 @@ Python和那些使用Python时候很basic的commands: https://github.com/0818308
 # 极客的一些很酷的事情
 - [ ] 搞搞硬件, 修电脑
 - [ ] 搭建个人网站
+# Python学习网站
+和 xueshan 哥一起搞个python学习网站, 一起学python
