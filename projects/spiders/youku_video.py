@@ -1,10 +1,33 @@
 import re
 import time
+import random
 import requests
 import pandas as pd
 from youku_get_links import get_all_links
 
 one_url = "https://v.youku.com/v_show/id_XNDI0NzkwNTgyNA==.html?spm=a2hja.12701310.filter.2594&s=07b8722657364fa2a485&s=07b8722657364fa2a485"
+
+ip_pool = []
+
+http_ip_pool = [
+    '58.246.58.150:9002',
+    '153.101.67.170:9002',
+    '112.51.96.118:9001',
+    '51.79.229.202:3128',
+    '114.55.84.12:30001',
+    '111.59.4.88:9002',
+    '120.26.0.11:8880',
+    '106.14.255.124:80',
+    '183.215.23.242:9091',
+    '218.57.210.186:9002'
+]
+
+https_ip_pool = [
+    '111.225.153.13:8089'
+]
+
+def get_random_ip(ip_pool):
+    return random.choice(ip_pool)
 
 def get_urls(path):
     urls = []
@@ -15,6 +38,13 @@ def get_urls(path):
     return urls
 
 def get_conetent(url):
+    ip = get_random_ip(https_ip_pool)
+
+    proxies = {
+        'http': 'http://' + ip,
+        'https': 'https://' + ip
+    }
+
     headers= {
     "authority": "v.youku.com",
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
@@ -49,7 +79,7 @@ def get_conetent(url):
     fuck_words = "<script>sessionStorage.x5referer = window.location.href;window.location.replace" 
 
     try:
-        response = requests.get(url, headers = headers).text
+        response = requests.get(url, headers = headers, proxies = proxies).text
         # print(response)
         
         if fuck_words in response:

@@ -1,3 +1,4 @@
 
 Pipfile
 .vscode/settings.json
+*.pyc
