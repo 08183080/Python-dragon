@@ -181,6 +181,7 @@ Python自动化爬取指定网站的数据信息。\
 # Python和电脑维修
 # Python和其他PL
 ## Rust
+- [ ] [Rust语言中文社区](https://rustcc.cn/)
 ## Move
 - [ ] Sui链
 - [ ] Aptos链
