@@ -80,7 +80,10 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 【gemma 2b微调】对于gemma喂公司的datasets, 从而finetune【AI工具尝鲜】
   - [ ] [gemma 2b finetune](https://github.com/adithya-s-k/LLM-Alchemy-Chamber/blob/main/Finetuning/Gemma_finetuning_notebook.ipynb) 
 - [ ] 【数据预测】随便帮人忙, 预测土壤含水量
-  - [ ] 我准备基于它提供的数据乱七八糟改动了, 没有营养的外包到此为止吧 
+  - [ ] 我准备基于它提供的数据乱七八糟改动了, 没有营养的外包到此为止吧
+- [x] 【Python问题辅导】辅导一个大专的上海妹妹一些python运行报错问题
+  - [x] 其实问题很简单, (1) 文件名不能循环引用, (2) with语句写文件的时候记文件夹要创建
+  - [x] 收益 +100*0.7 = 70   
 ## 【硬件】项目
 ### 【华师】修电脑
 ### 【英特尔】玩硬件
