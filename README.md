@@ -102,7 +102,7 @@ Python自动化爬取指定网站的数据信息。\
     - [ ] 【展望】如何改造成【去中心化】的实现?
 - [ ] 【项目部署导出exe **部署**模块】
   - [x] 【虚拟环境】导出test.exe和run.exe可以运行|pyinstaller要安装在虚拟环境中, 可以在spec中加入pathex参数
-  - [ ] github的action的release
+  - [ ] github的action的操作
 ## 排忧解难释纠纷
 ### 老年人的app操作
 - [x] 【手机充费】帮助宿管阿姨套餐续费+宽带续费
