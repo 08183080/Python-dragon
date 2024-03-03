@@ -2,7 +2,7 @@
 我想把文件夹内所有的图片都转换成gif
 用到的包是哪些?
 Python图像处理的包:
-Pillow, opencv-python
+Pillow, opencv-python.
 """
 
 import os
