@@ -271,3 +271,7 @@ Python和那些使用Python时候很basic的commands: https://github.com/0818308
 - [ ] 【know what you want】做一款app可以帮助某人明白自己擅长什么, 理清自己想要的, 可以和MBTI集成
 # Python优质公众号
 - [ ] 【未闻code】群主 谢乾坤, 很厉害的数据爬虫大佬, 【一日一技】系列很不错, 我的某个周末高铁之旅可以完整畅快阅读
+# Python IDE之思之辩
+## 是Vscode, 还是Pycharm呢?
+- [ ] 谢乾坤 大佬线上MVP分享的时候, 我问了这个问题
+- [ ] Pycharm的优势是自建虚拟环境, 很强的debug能力, 而Vscode的优势是各种包轻盈便捷, 各有各的好处, 看自己的心意了
