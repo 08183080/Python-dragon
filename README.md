@@ -140,7 +140,9 @@ Python自动化爬取指定网站的数据信息。\
   - [x] seek(0, 2) 可以直接到文件的最末尾
   - [x] 文件打开模式有字节模式和文本模式 
 - [x] Python的JSON序列化
-  - [ ] load和xxx方法 
+  - [x] loads和dumps方法
+  - [x] loads()是将JSON格式的字符串解析成Python对象(字典or对象)
+  - [x] dumps()是将Python对象转换为JSON格式的字符串
 - [ ] Python和正则表达式
 - [x] Python的基础数据结构(列表、元组、字典、集合、字符串、堆、栈、树、图)
   - [ ] Python中函数也是对象, 对象也可以变成函数使用, 实现__call__即可
