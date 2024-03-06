@@ -83,12 +83,14 @@ Python自动化爬取指定网站的数据信息。\
   - [ ] [gemma 2b finetune](https://github.com/adithya-s-k/LLM-Alchemy-Chamber/blob/main/Finetuning/Gemma_finetuning_notebook.ipynb)
   - [ ] 客户改变主意了, 准确地说是客户的领导改变主意: chatglm3-6b微调
 - [ ] 【chatglm3-6b finuetune 指导】指导客户在公司服务器finetune chatglm 
-- [x] 【数据预测】随便帮人忙, 预测土壤含水量
+- [x] 【含水量 数据预测】随便帮人忙, 预测土壤含水量
   - [x] 我准备基于它提供的数据乱七八糟改动了, 没有营养的外包到此为止吧
   - [x] 项目代码: https://github.com/08183080/predict_water 
 - [x] 【Python问题辅导】辅导一个大专的上海妹妹一些python运行报错问题
   - [x] 其实问题很简单, (1) 文件名不能循环引用, (2) with语句写文件的时候记文件夹要创建
-  - [x] 收益 +100*0.7 = 70   
+  - [x] 收益 +100*0.7 = 70
+- [ ] 【套壳GPT系列服务部署】liutao前辈安利 https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web 这个项目本地部署演示
+  - [ ] 注意不要被薅羊毛 
 ## 【硬件】项目
 ### 【华师】修电脑
 ### 【英特尔】玩硬件
@@ -140,7 +142,7 @@ Python自动化爬取指定网站的数据信息。\
   - [x] flush()函数可以写一次缓存清理一次缓存
   - [x] seek(0, 2) 可以直接到文件的最末尾
   - [x] 文件打开模式有字节模式和文本模式 
-- [x] Python的JSON序列化
+- [x] Python的JSON 序列化 和 反序列化
   - [x] loads和dumps方法
   - [x] loads()是将JSON格式的字符串解析成Python对象(字典or对象)
   - [x] dumps()是将Python对象转换为JSON格式的字符串
