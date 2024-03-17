@@ -21,7 +21,7 @@ headers = {
 }
 
 videos_url = "https://v.qq.com/channel/movie/list"
-one_video_url = "https://v.qq.com/x/cover/znda81ms78okdwd/e00242bvw06.html" 
+one_video_url = "https://v.qq.com/x/cover/2iqrhqekbtgwp1s/d0034wa4l3e.html" 
 
 
 def get_response(html_url):
@@ -153,31 +153,33 @@ def get_content(html_url):
         title = tree.xpath(
             "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/span/text()"
         )[0]
-        hot_trend = tree.xpath(
-            "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()"
-        )[0]
+        print(title)
+        # hot_trend = tree.xpath(
+        #     "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div[2]/div[1]/div[1]/div[1]/div/div[2]/span[1]/text()"
+        # )[0]
+        # print(hot_trend)
         story = tree.xpath("/html/head/meta[5]/@content")[0]
 
         m1 = re.search(score_pattern, response)
         if m1:
             score = m1.group()
-            # print(score)
+            print(score)
 
         m2 = re.search(type_pattern, response)
         if m2:
             main_genres = m2.group(1)
             categories = main_genres 
-            # print(categories)  
+            print(categories)  
         
         m3 = re.search(area_pattern, response)
         if m3:
             area = m3.group(1)
-            # print(area)  
+            print(area)  
 
         m4 = re.search(date_pattern, response)
         if m4:
             date = m4.group(1)
-            # print(date)      
+            print(date)      
 
         comments = get_comment(html_url) # start, end
         comments_num = len(comments)
@@ -254,12 +256,15 @@ def get_and_download(start, end, path):
     # data.to_csv(path, index=False, encoding='utf-8') # excel打开乱码
 
 if __name__ == '__main__':
+    # print(get_content(one_video_url))
+    # print(get_comment(one_video_url))
+
     # get_and_download(120, 200 "电影_3.xlsx") # 电影完全get
-    # get_and_download(180, 200, "动漫_2.xlsx") # 动漫完全get
+    get_and_download(10, 70, "腾讯动漫.xlsx") # 动漫完全get
     # get_and_download(0, 200, "纪录片.xlsx") # 纪录片完全get
     # get_and_download(0, 200, "少儿.xlsx") # 少儿完全get
     # get_and_download(0, 50, "电视剧_1.xlsx") # 电视剧WTF  openpyxl写入非法字符错误!
     # get_and_download(50, 100, "电视剧_2.xlsx")
     # get_and_download(100, 150, "电视剧_3.xlsx")
-    get_and_download(150, 200, "电视剧_4.xlsx")
+    # get_and_download(150, 200, "电视剧_4.xlsx")
     # get_and_download(0, 200, "综艺片.xlsx") # 综艺片完全get
