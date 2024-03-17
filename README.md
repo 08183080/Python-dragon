@@ -95,6 +95,7 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 【套壳GPT系列服务部署】liutao前辈安利 https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web 这个项目本地部署演示
   - [ ] 注意不要被薅羊毛
   - [ ] azure的openai秘钥申请也是需要国外银行卡的, 借用前辈的公司的秘钥玩玩
+- [ ] 【调通SQLCoder-7B】把SQLCoder-7B调通, https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Hlo472sa2 
 ## 【硬件】项目
 ### 【华师】修电脑
 ### 【英特尔】玩硬件
