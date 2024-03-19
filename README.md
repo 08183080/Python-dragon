@@ -84,8 +84,9 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 【gemma 2b微调】对于gemma喂公司的datasets, 从而finetune【AI工具尝鲜】
   - [ ] [gemma 2b finetune](https://github.com/adithya-s-k/LLM-Alchemy-Chamber/blob/main/Finetuning/Gemma_finetuning_notebook.ipynb)
   - [ ] 客户改变主意了, 准确地说是客户的领导改变主意: chatglm2-6b微调
-- [ ] 【chatglm2-6b finuetune 指导】指导客户在公司服务器finetune chatglm
-  - [ ] 和客户的交流记录于此: https://github.com/08183080/chatglm2-6b-play  
+- [x] 【chatglm2-6b finuetune 指导】指导客户在公司服务器finetune chatglm
+  - [x] 和客户的交流记录于此: https://github.com/08183080/chatglm2-6b-play
+  - [x] 这个项目收尾, 盈利+1000   
 - [x] 【含水量 数据预测】随便帮人忙, 预测土壤含水量
   - [x] 我准备基于它提供的数据乱七八糟改动了, 没有营养的外包到此为止吧
   - [x] 项目代码: https://github.com/08183080/predict_water 
