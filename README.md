@@ -81,6 +81,7 @@ Python自动化爬取指定网站的数据信息。\
 - [x] 【数据收集】收集福建省的房贷数据
   - [x] 一个学校比较一般的学校的妹妹搜集福建贷款数据,
   - [x] 我就找了些数据+给妹妹输送些营养鸡汤, +80*0.6=48
+  - [ ] 继续寻找, 梁学弟用【chatgpt越狱版】
 - [ ] 【gemma 2b微调】对于gemma喂公司的datasets, 从而finetune【AI工具尝鲜】
   - [ ] [gemma 2b finetune](https://github.com/adithya-s-k/LLM-Alchemy-Chamber/blob/main/Finetuning/Gemma_finetuning_notebook.ipynb)
   - [ ] 客户改变主意了, 准确地说是客户的领导改变主意: chatglm2-6b微调
