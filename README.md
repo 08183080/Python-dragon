@@ -97,11 +97,12 @@ Python自动化爬取指定网站的数据信息。\
 - [ ] 【套壳GPT系列服务部署】liutao前辈安利 https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web 这个项目本地部署演示
   - [ ] 注意不要被薅羊毛
   - [ ] azure的openai秘钥申请也是需要国外银行卡的, 借用前辈的公司的秘钥玩玩
-- [ ] 【调通SQLCoder-7B】把SQLCoder-7B调通, https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Hlo472sa2
+- [x] 【调通SQLCoder-7B】把SQLCoder-7B调通, https://cloud.baidu.com/doc/WENXINWORKSHOP/s/Hlo472sa2
   - [x] 【沟通心态】我太年轻了, 这次操作的时候以为是so easy忘记同理心了, 整的他心态破防, 所以说要**耐心+等待**
   - [x] 核心原因似乎是影响他交作业了他嫌弃, 和校友师兄聊了聊天我收的钱太低了。。。
   - [x] **大丈夫生于天地之间, 岂能为三两黄金而错过烂漫春光, 吾不为也**, 到此为止, 外包结束, 开始新时期和阶段!
   - [x] 【自我反省】我怠慢客户了, 客户听不见我的声音了, 自然不满, 这在一定程度上是有的
+  - [x] 最后收费+500, 不过和这个北大客户哥天涯相忘了, 接下来全身心专注搞搞自己的其他事业
 ## 【硬件】项目
 ### 【华师】修电脑
 ### 【英特尔】玩硬件
