@@ -131,6 +131,9 @@ Python自动化爬取指定网站的数据信息。\
   - [x] 3/2和一位创业姐姐聊天, 我因该拥有全栈开发能力
   - [x] 【To Do List】和那个姐姐接触, AI t do list软件
   - [x] 我太摆, 她嫌弃我了hhh
+## 【学校】项目
+- [ ] 【fuzzing book】fuzzing book 实操
+  - [ ] my repo: https://github.com/08183080/fuzzing-book-practice 
 ## 排忧解难释纠纷
 ### 老年人的app操作
 - [x] 【手机充费】帮助宿管阿姨套餐续费+宽带续费
